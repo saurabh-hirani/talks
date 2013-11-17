@@ -2,7 +2,7 @@
 
 - Created by Vladimir Keleshev
 
-- PyCon video - [docopt intro](http://docopt.org)
+- PyCon UK video - [docopt intro](http://docopt.org)
 
 - Some code snippets taken from above site
 
