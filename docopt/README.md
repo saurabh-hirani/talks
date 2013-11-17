@@ -57,7 +57,7 @@
 
 - Program: `connector_3.py`
 
-## Keep the design and development separate yet connected
+## Keep the design and development separate
 
 - Read man page of `git` command
 
