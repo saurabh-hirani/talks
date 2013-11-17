@@ -1,4 +1,4 @@
-### Using decorators to register Callbacks
+# Using decorators to register Callbacks
 
 - Detailed blog post - [Using decorators to register callbacks](http://curiosityhealsthecat.blogspot.in/2013/07/using-python-decorators-for-registering_8614.html)
 
@@ -8,14 +8,14 @@
 
 - e.g. When url contains '/main_page' call the main page function
 
-# callback-1.py
+### callback-1.py
 
 - Sample callback which maps function name description with the function
 
 - When dictionary is looked up for that function name - it returns the function
   reference
 
-# callback-2.py
+### callback-2.py
 
 - Registering callbacks via a class
 
@@ -24,7 +24,7 @@
 
 ## Decorators - overview
 
-# decorator-1.py
+### decorator-1.py
 
 - A wrapper around a function to add pre/post functionality to the function
 
@@ -32,13 +32,13 @@
   when called would do some pre/post work and call the target function
   in between
 
-# decorator-2.py
+### decorator-2.py
 
 - Using the pythonic way 
 
 - equivalent to decorator-1.py in functionality
 
-# decorator-3.py
+### decorator-3.py
 
 - Using functools.wraps
 
@@ -46,14 +46,14 @@
 
 - standard way
 
-# decorator-4.py
+### decorator-4.py
 
 - Decorator with arguments
 
-# callback-decorator.py
+### callback-decorator.py
 
 - Marrying callbacks and decorator
 
-# decorator-5.py
+### decorator-5.py
 
 - Sample example of using nested decorators
