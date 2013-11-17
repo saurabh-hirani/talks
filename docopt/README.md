@@ -1,6 +1,6 @@
 # docopt overview
 
-- Why I switched from docopt/argparse to docopt
+- Created by Vladimir Keleshev
 
 - Detailed video - [docopt intro](http://docopt.org)
 
