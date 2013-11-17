@@ -1,5 +1,0 @@
-
-    connector tcp <host> <port> [--timeout=seconds]
-    connector serial <port> [--baud=9600] [--timeout=seconds]
-    connector (-h|--help|--version)
-
