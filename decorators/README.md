@@ -50,9 +50,11 @@
 
 - Decorator with arguments
 
+## Marrying callbacks and decorator
+
 ### callback-decorator.py
 
-- Marrying callbacks and decorator
+- Register callbacks using decorators 
 
 ### decorator-5.py
 
