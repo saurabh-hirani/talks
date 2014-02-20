@@ -1,7 +1,6 @@
-Lessons learnt while automating docstring testing
+## Lessons learnt while automating docstring testing
 =================================================
 
-This is the repo containing the source code used for the ipython notebook blog
-post - http://nbviewer.ipython.org/gist/saurabh-hirani/9037811
+This is the repo containing the source code used for this <a href="http://nbviewer.ipython.org/gist/saurabh-hirani/9037811" target="_blank">ipython notebook </a>
 
 Please use the blogspot link mentioned in the notebook for posting your comments.
