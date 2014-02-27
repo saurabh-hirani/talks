@@ -46,9 +46,6 @@ class Modstruct4(object):
         """ From all the members extract out member tree of the base 
         entity """
         base_entity_name = self.get_base_entity_name()
-        print "-----------"
-        print self.base_entity, id(self.base_entity), base_entity_name
-        print "-----------"
 
         base_entity_members = []
         for member in self.all_members:
@@ -59,6 +56,7 @@ class Modstruct4(object):
     def get_entity_members(self, entity):
         """ Get first level members of the passed entity """
         members = []
+        parent_name = self.get_entity_name(entity)
         for member in inspect.getmembers(entity):
             ref = member[1]
             # member has to be of supported entity type
@@ -71,7 +69,13 @@ class Modstruct4(object):
             # valid member - append member reference, type and name to the 
             # member  list
             print ref_type, ref, entity, id(ref)
-            members.append({'type': ref_type, 'ref': ref, 'parent': entity})
+            member_data = {
+                'type': ref_type, 
+                'ref': ref, 
+                'parent': entity,
+                'name': parent_name + '.' + ref.__name__
+            }
+            members.append(member_data)
             self.build_id_name_map(ref, entity)
         return members
 
@@ -80,7 +84,9 @@ class Modstruct4(object):
 
         # add base module as the first element
         all_members = [{'type': 'module',
-                        'ref': self.base_module, 'parent_ref': None}]
+                        'ref': self.base_module, 
+                        'parent_ref': None,
+                        'name': self.base_module.__name__}]
 
         # add base module as first entry to id_name_map - root of all names
         self.build_id_name_map(self.base_module, None)
@@ -101,10 +107,6 @@ class Modstruct4(object):
                     curr_nested_members.extend(members)
             nested_members = curr_nested_members
             all_members.extend(nested_members)
-
-        # set fully qualified name of all members
-        for member in all_members:
-            member['name'] = self.get_entity_name(member['ref'])
 
         self.all_members = all_members
 
@@ -141,6 +143,5 @@ class TestDocstr4(object):
                                                                    refname))
             raise NoDocstrError('\n' + '\n'.join(errors))
         return True
-
 
 TestDocstr4.test_docstr(mod1.SpecFile.Section1.validate)

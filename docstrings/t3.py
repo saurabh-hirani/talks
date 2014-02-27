@@ -47,6 +47,7 @@ class Modstruct3(object):
     def get_entity_members(self, entity):
         """ Get first level members of the passed entity """
         members = []
+        parent_name = self.get_entity_name(entity)
         for member in inspect.getmembers(entity):
             ref = member[1]
             # member has to be of supported entity type
@@ -58,7 +59,13 @@ class Modstruct3(object):
             if ref.__module__ != self.base_module.__name__: continue
             # valid member - append member reference, type and name to the 
             # member  list
-            members.append({'type': ref_type, 'ref': ref, 'parent': entity})
+            member_data = {
+                'type': ref_type, 
+                'ref': ref, 
+                'parent': entity,
+                'name': parent_name + '.' + ref.__name__
+            }
+            members.append(member_data)
             self.build_id_name_map(ref, entity)
         return members
 
@@ -67,7 +74,9 @@ class Modstruct3(object):
 
         # add base module as the first element
         all_members = [{'type': 'module',
-                        'ref': self.base_module, 'parent_ref': None}]
+                        'ref': self.base_module, 
+                        'parent_ref': None,
+                        'name': self.base_module.__name__}]
 
         # add base module as first entry to id_name_map - root of all names
         self.build_id_name_map(self.base_module, None)
@@ -88,10 +97,6 @@ class Modstruct3(object):
                     curr_nested_members.extend(members)
             nested_members = curr_nested_members
             all_members.extend(nested_members)
-
-        # set fully qualified name of all members
-        for member in all_members:
-            member['name'] = self.get_entity_name(member['ref'])
 
         self.all_members = all_members
 
@@ -129,5 +134,4 @@ class TestDocstr3(object):
         return True
 
 
-#TestDocstr3.test_docstr(mod1.SpecFile.Section1.validate)
 TestDocstr3.test_docstr(mod1.SpecFile.Section1)
