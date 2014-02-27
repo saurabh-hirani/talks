@@ -11,9 +11,7 @@ class Modstruct4(object):
 
     def __init__(self, base_entity):
         self.base_entity_type = get_entity_type(base_entity)
-        print "yyyyyyyyy", id(base_entity)
         self.base_entity = base_entity
-        print "zzzzzzzzz", id(self.base_entity)
         self.base_module = base_entity
         self.id_name_map = {}
         self.all_members = []
@@ -66,9 +64,7 @@ class Modstruct4(object):
                 continue
             # member has to be defined in base module
             if ref.__module__ != self.base_module.__name__: continue
-            # valid member - append member reference, type and name to the 
-            # member  list
-            print ref_type, ref, entity, id(ref)
+            # valid member - construct member data
             member_data = {
                 'type': ref_type, 
                 'ref': ref, 
@@ -122,7 +118,6 @@ class TestDocstr4(object):
 
     @classmethod
     def test_docstr(self, entity):
-        print "aaaaaaaaa", id(entity)
         all_members = Modstruct4(entity).get_all_members()
 
         non_docstr_entities = defaultdict(list)

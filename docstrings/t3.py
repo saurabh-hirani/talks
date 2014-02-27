@@ -57,8 +57,7 @@ class Modstruct3(object):
                 continue
             # member has to be defined in base module
             if ref.__module__ != self.base_module.__name__: continue
-            # valid member - append member reference, type and name to the 
-            # member  list
+            # valid member - construct member data
             member_data = {
                 'type': ref_type, 
                 'ref': ref, 
