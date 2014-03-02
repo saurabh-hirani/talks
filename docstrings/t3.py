@@ -36,6 +36,10 @@ class Modstruct3(object):
     def extract_entity_members(self):
         """ From all the members extract out member tree of the base 
         entity """
+        if self.base_entity_type == 'module':
+            self.base_entity_members = self.all_members
+            return self.base_entity_members
+
         base_entity_name = self.get_entity_name(self.base_entity)
 
         base_entity_members = []
@@ -55,14 +59,20 @@ class Modstruct3(object):
                 ref_type = get_entity_type(ref)
             except ValueError:
                 continue
+
+            # we will not inspect modules imported in base module
+            if inspect.ismodule(ref): continue
+
             # member has to be defined in base module
             if ref.__module__ != self.base_module.__name__: continue
+
             # valid member - construct member data
             member_data = {
                 'type': ref_type, 
                 'ref': ref, 
+                'name': parent_name + '.' + ref.__name__,
                 'parent_ref': entity,
-                'name': parent_name + '.' + ref.__name__
+                'parent_name': parent_name
             }
             members.append(member_data)
             self.build_id_name_map(ref, entity)
@@ -74,8 +84,9 @@ class Modstruct3(object):
         # add base module as the first element
         all_members = [{'type': 'module',
                         'ref': self.base_module, 
+                        'name': self.base_module.__name__,
                         'parent_ref': None,
-                        'name': self.base_module.__name__}]
+                        'parent_name': None}]
 
         # add base module as first entry to id_name_map - root of all names
         self.build_id_name_map(self.base_module, None)
@@ -99,12 +110,9 @@ class Modstruct3(object):
 
         self.all_members = all_members
 
-        # if entity is not a module extract the entity members from all 
-        # members
-        if self.base_entity_type == 'module':
-            return all_members
-
+        # extract subset of members in case base_entity is not a module
         self.extract_entity_members()
+
         return self.base_entity_members
 
 class TestDocstr3(object):

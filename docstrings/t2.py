@@ -20,6 +20,7 @@ class Modstruct2(object):
     def get_entity_members(self, entity):
         """ Get first level members of the passed entity """
         members = []
+        parent_name = entity.__name__
         for member in inspect.getmembers(entity):
             ref = member[1]
             # member has to be of supported entity type
@@ -27,14 +28,20 @@ class Modstruct2(object):
                 ref_type = get_entity_type(ref)
             except ValueError:
                 continue
+
+            # we will not inspect modules imported in base module
+            if inspect.ismodule(ref): continue
+
             # member has to be defined in base module
             if ref.__module__ != self.base_module.__name__: continue
+
             # valid member - construct member data
             member_data = {
                 'type': ref_type, 
                 'ref': ref, 
+                'name': entity.__name__ + '.' + ref.__name__,
                 'parent_ref': entity,
-                'name': entity.__name__ + '.' + ref.__name__
+                'parent_name': parent_name,
             }
             members.append(member_data)
         return members
@@ -44,8 +51,9 @@ class Modstruct2(object):
         # add base module as the first element
         all_members = [{'type': 'module',
                         'ref': self.base_module, 
+                        'name': self.base_module.__name__,
                         'parent_ref': None,
-                        'name': self.base_module.__name__}]
+                        'parent_name': None}]
 
         # get first level members of the main entity
         nested_members = self.get_entity_members(self.base_entity)
