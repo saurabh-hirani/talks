@@ -4,7 +4,7 @@ import mod1
 import inspect
 from collections import defaultdict
 
-class ModStruct1(object):
+class Modstruct1(object):
     """ Return a data structure representing all members of the passed
     entity """
 
@@ -23,7 +23,7 @@ class TestDocstr1(object):
         """ Test whether the passed in entity and its children have docstring """
         entity_type = None
         non_docstr_entities = defaultdict(list)
-        all_members = ModStruct1(entity).get_all_members()
+        all_members = Modstruct1(entity).get_all_members()
 
         # get all the members of the passed entity
         for member in all_members:

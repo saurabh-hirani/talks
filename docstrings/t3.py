@@ -61,7 +61,7 @@ class Modstruct3(object):
             member_data = {
                 'type': ref_type, 
                 'ref': ref, 
-                'parent': entity,
+                'parent_ref': entity,
                 'name': parent_name + '.' + ref.__name__
             }
             members.append(member_data)
@@ -132,5 +132,4 @@ class TestDocstr3(object):
             raise NoDocstrError('\n' + '\n'.join(errors))
         return True
 
-
-TestDocstr3.test_docstr(mod1.SpecFile.Section1)
+TestDocstr3.test_docstr(mod1)

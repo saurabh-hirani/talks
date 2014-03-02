@@ -29,16 +29,24 @@ class Modstruct2(object):
                 continue
             # member has to be defined in base module
             if ref.__module__ != self.base_module.__name__: continue
-            # valid member - append member reference, type and name to the 
-            # member  list
-            members.append((ref_type, ref, 
-                            entity.__name__ + '.' + ref.__name__))
+            # valid member - construct member data
+            member_data = {
+                'type': ref_type, 
+                'ref': ref, 
+                'parent_ref': entity,
+                'name': entity.__name__ + '.' + ref.__name__
+            }
+            members.append(member_data)
         return members
 
     def get_all_members(self):
         """ Get all the members (nested also) of the passed entity """
-        all_members = [(self.base_entity_type, self.base_entity, 
-                        self.base_entity.__name__)]
+        # add base module as the first element
+        all_members = [{'type': 'module',
+                        'ref': self.base_module, 
+                        'parent_ref': None,
+                        'name': self.base_module.__name__}]
+
         # get first level members of the main entity
         nested_members = self.get_entity_members(self.base_entity)
         all_members.extend(nested_members)
@@ -47,10 +55,10 @@ class Modstruct2(object):
         # there are no nested members
         while nested_members:
             curr_nested_members = []
-            for member_type, member_ref, member_name in nested_members:
-                if member_type == 'class':
+            for member_data in nested_members:
+                if member_data['type'] == 'class':
                     # drill nested members only in a class
-                    members = self.get_entity_members(member_ref)
+                    members = self.get_entity_members(member_data['ref'])
                     curr_nested_members.extend(members)
             nested_members = curr_nested_members
             all_members.extend(nested_members)
@@ -67,10 +75,10 @@ class TestDocstr2(object):
 
         # get all the nested members of root entity
         for member_data in all_members:
-            member_type, member_ref, member_name = member_data
             # consolidate members based on type
-            if not has_docstr(member_ref):
-                non_docstr_entities[member_type].append(member_name)
+            if not has_docstr(member_data['ref']):
+                member_name = member_data['name']
+                non_docstr_entities[member_data['type']].append(member_name)
 
         if non_docstr_entities.keys():
             errors = []

@@ -68,7 +68,7 @@ class Modstruct4(object):
             member_data = {
                 'type': ref_type, 
                 'ref': ref, 
-                'parent': entity,
+                'parent_ref': entity,
                 'name': parent_name + '.' + ref.__name__
             }
             members.append(member_data)
