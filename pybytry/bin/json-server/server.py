@@ -16,8 +16,6 @@ def page_not_found(err):
 @app.route('/json/<path:filepath>', methods=['GET'])
 def load_json_file(filepath):
 
-  print filepath
-
   abs_filepath = os.path.join(os.sep, filepath)
   if not os.path.exists(abs_filepath):
     return page_not_found('Path %s does not exist' % filepath)
