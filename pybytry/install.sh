@@ -7,3 +7,10 @@
 pip install requests
 pip install grequests
 pip install flask
+
+mkdir -p /var/tmp/pybytry
+cd /var/tmp/pybytry
+
+git clone https://github.com/saurabh-hirani/jsonchecker
+git clone https://github.com/saurabh-hirani/jsonserver
+git clone https://github.com/saurabh-hirani/pyfunc
