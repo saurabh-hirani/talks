@@ -35,7 +35,12 @@ def main(args):
     print 'ERROR: Did not provide config file'
     return 1
 
-  cfg = load_cfg(args[1])
+  cfg_file = args[1]
+  if not os.path.exists(cfg_file):
+    print 'ERROR: Config file %s does not exist' % cfg_file
+    return 1
+
+  cfg = load_cfg(cfg_file)
 
   app.run(host=cfg['server']['host'], port=int(cfg['server']['port']),
           debug=True)
