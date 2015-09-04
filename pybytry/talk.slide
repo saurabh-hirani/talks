@@ -1,0 +1,58 @@
+pybytry
+
+Saurabh Hirani
+@sphirani
+saurabhhirani@bluejeansnet.com
+
+* This talk is about:
+
+- Writing better python command line tools
+- Dissecting existing code and understanding its building blocks
+
+* This talk is not:
+
+- Yet another python tutorial
+- We will cover some interesting topics though
+
+* What's in it for you:
+
+- Discerning good and bad code
+- Understanding production-ready code
+
+* Pre-requisites:
+
+- Basic python (you can read and edit existing python code)
+
+* Assumptions:
+
+- Based on my battle tested knowledge - opinionated but open to learning
+
+* Bare bones command line tools need:
+
+- Help text
+- Clear, usable, short and long command line switches
+- Wherever applicable: dry-run, verbose logging, multi level logging
+
+* They also need:
+
+- Breaking your program into manageable functions
+- Combining building block functions into a class if required
+- Ensuring that your program is usable both as a command line tool and a program - stretch goal
+
+* jsonserver
+
+- Usage and code
+
+* jsonchecker
+
+- Usage and code
+
+* pyfunc
+
+- Usage
+
+* If time permits
+
+- sets
+- ordered dictionaries
+- dynamic imports
