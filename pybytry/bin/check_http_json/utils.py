@@ -14,33 +14,6 @@ class HTTPJsonError(HTTPError): pass
 
 DEFAULT_HTTP_TIMEOUT = 60
 
-def do_parallel_http_get(urls, kwargs):
-  # update default params
-  params = {
-    'timeout': DEFAULT_HTTP_TIMEOUT
-  }
-  params.update(kwargs)
-
-  headers={}
-  if params['username'] and  params['password']:
-    authstr = params['username'] + ':' + params['password']
-    headers = {'Authorization': 'Basic ' + base64.b64encode(authstr)}
-
-  data = [grequests.get(url, headers=headers,
-                        timeout=params['timeout']) for url in urls]
-
-  responses = {}
-  valid_urls = []
-
-  for response in grequests.map(data):
-    try:
-      responses[response.request.url] = response
-    except AttributeError as e:
-      # hack to handler failed urls
-      pass
-
-  return responses
-
 def do_http_get(url, **kwargs):
   # update default params
   params = {
@@ -81,3 +54,30 @@ def do_http_get_json(url, **kwargs):
                                                              content_type))
 
   return response.json()
+
+def do_parallel_http_get(urls, kwargs):
+  # update default params
+  params = {
+    'timeout': DEFAULT_HTTP_TIMEOUT
+  }
+  params.update(kwargs)
+
+  headers={}
+  if params['username'] and  params['password']:
+    authstr = params['username'] + ':' + params['password']
+    headers = {'Authorization': 'Basic ' + base64.b64encode(authstr)}
+
+  data = [grequests.get(url, headers=headers,
+                        timeout=params['timeout']) for url in urls]
+
+  responses = {}
+  valid_urls = []
+
+  for response in grequests.map(data):
+    try:
+      responses[response.request.url] = response
+    except AttributeError as e:
+      # hack to handler failed urls
+      pass
+
+  return responses

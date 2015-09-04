@@ -11,7 +11,9 @@ app = flask.Flask(__name__)
 
 @app.errorhandler(404)
 def page_not_found(err):
-  return flask.jsonify(error=404, text=str(err)), 404
+  response = flask.jsonify(error=404, text=str(err))
+  response.status_code = 404
+  return response
 
 @app.route('/json/<path:filepath>', methods=['GET'])
 def load_json_file(filepath):

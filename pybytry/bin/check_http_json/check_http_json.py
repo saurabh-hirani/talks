@@ -34,15 +34,24 @@ def check_json(kwargs):
   # make parallel http get requests
   responses = utils.do_parallel_http_get(urls, kwargs)
 
+  valid_responses = {}
+  invalid_responses = {}
+
+  for url, response in responses.iteritems():
+    if response.status_code == 200:
+      valid_responses[url] = response
+      continue
+
+    invalid_responses[url] = response
+
   # validate if urls returned 200
-  valid_responses = responses.keys()
-  invalid_responses = set(urls) - set(valid_responses)
+  #valid_responses = responses.keys()
+  #invalid_responses = set(urls) - set(valid_responses)
 
-  invalid_urls = {}
   valid_urls = {}
+  invalid_urls = {}
 
-  for url in valid_responses:
-    response = responses[url]
+  for url, response in valid_responses.iteritems():
     valid_urls[url] = response.json()
     if kwargs['verbose']:
       print "------url------"
@@ -52,15 +61,17 @@ def check_json(kwargs):
       print "\n"
 
   if invalid_responses:
-    for url in invalid_responses:
+    for url, response in invalid_responses.iteritems():
+      invalid_urls[url] = response.json()
       if kwargs['verbose']:
         print "------url------"
         print 'url: %s' % url
+        print json.dumps(invalid_urls[url], indent=4)
         print "\n"
 
     print 'CRITICAL: Problem detected. See detailed output'
     print json.dumps({
-      'invalid_urls': list(invalid_responses),
+      'invalid_urls': invalid_urls,
       'valid_urls': valid_urls,
     }, indent=4)
     return 2
@@ -97,7 +108,7 @@ def check_json(kwargs):
 
     match_val = None
 
-    # do match key checks
+    # do match key val checks
     if kwargs['match_key_val']:
       match_key, match_val = kwargs['match_key_val'].split(kwargs['key_sep'])
 
@@ -114,7 +125,7 @@ def check_json(kwargs):
 
       valid_urls[url].append('Matched keyval %s = %s' % (match_key, match_val))
 
-    # no values to check against ma
+    # no values to check against match key value
     if 'warning' not in kwargs:
       continue
 
@@ -179,6 +190,47 @@ def check_json(kwargs):
   print 'OK: All good'
   print json.dumps(valid_urls, indent=4)
   return 0
+
+def validate(args):
+  invalid_invoc_msg = 'UNKNOWN: Invalid invocation - ' 
+
+  if not args['uri'].startswith('/'):
+    print invalid_invoc_msg + 'uri should start with single /'
+    sys.exit(3)
+
+  # check if mutually exclusive args are not specified
+  # wanted to keep it simple - avoided using parser.add_mutally_exclusive_group
+  if (args['warning'] is not None) ^ (args['critical'] is not None):
+    print invalid_invoc_msg + 'either provide both warning and critical or none'
+    sys.exit(3)
+
+  if args['callback_path'] and args['callback_module']:
+    print invalid_invoc_msg + 'cannot specify both callback_path and callback_module'
+    sys.exit(3)
+
+  if (args['callback_path'] or args['callback_module']) and not args['callback_func']:
+    print invalid_invoc_msg + 'callback_func not specified'
+    sys.exit(3)
+
+  # check if limits are nos.
+  is_warning_num = is_critical_num = args['are_limits_nos'] = True
+
+  try:
+    args['warning'] = float("%.2f" % float(args['warning']))
+  except (TypeError, ValueError):
+    args['are_limits_nos'] = False
+    is_warning_num = False
+
+  try:
+    args['critical'] = float("%.2f" % float(args['critical']))
+  except (TypeError, ValueError):
+    is_critical_num = False
+
+  if is_warning_num ^ is_critical_num is True:
+    print invalid_invoc_msg + 'cannot have different data types for warning and critical'
+    sys.exit(2)
+
+  return True
 
 def parse_cmdline(args):
   desc = 'Check http json response'
@@ -256,48 +308,11 @@ def parse_cmdline(args):
     print "------args------"
     print json.dumps(args, indent=4)
 
-  invalid_invoc_msg = 'UNKNOWN: Invalid invocation - ' 
-
-  if not args['uri'].startswith('/'):
-    print invalid_invoc_msg + 'uri should start with single /'
-    sys.exit(3)
-
-  # check if mutually exclusive args are not specified
-  # wanted to keep it simple - avoided using parser.add_mutally_exclusive_group
-  if (args['warning'] is not None) ^ (args['critical'] is not None):
-    print invalid_invoc_msg + 'either provide both warning and critical or none'
-    sys.exit(3)
-
-  if args['callback_path'] and args['callback_module']:
-    print invalid_invoc_msg + 'cannot specify both callback_path and callback_module'
-    sys.exit(3)
-
-  if (args['callback_path'] or args['callback_module']) and not args['callback_func']:
-    print invalid_invoc_msg + 'callback_func not specified'
-    sys.exit(3)
-
-  # check if limits are nos.
-  is_warning_num = is_critical_num = args['are_limits_nos'] = True
-
-  try:
-    args['warning'] = float("%.2f" % float(args['warning']))
-  except (TypeError, ValueError):
-    args['are_limits_nos'] = False
-    is_warning_num = False
-
-  try:
-    args['critical'] = float("%.2f" % float(args['critical']))
-  except (TypeError, ValueError):
-    is_critical_num = False
-
-  if is_warning_num ^ is_critical_num is True:
-    print invalid_invoc_msg + 'cannot have different data types for warning and critical'
-    sys.exit(2)
-
   return args
 
 def main():
   args = parse_cmdline(sys.argv)
+  validate(args)
   return check_json(args)
 
 if __name__ == '__main__':
