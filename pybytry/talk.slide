@@ -38,6 +38,7 @@ saurabhhirani@bluejeansnet.com
 - Breaking your program into manageable functions
 - Combining building block functions into a class if required
 - Ensuring that your program is usable both as a command line tool and a program - stretch goal
+- Installable via pip, package (debian/rpm), setup.py, install.sh
 
 * jsonserver
 
@@ -56,3 +57,5 @@ saurabhhirani@bluejeansnet.com
 - sets
 - ordered dictionaries
 - dynamic imports
+
+* Questions
