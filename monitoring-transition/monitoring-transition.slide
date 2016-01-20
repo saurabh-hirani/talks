@@ -1,0 +1,156 @@
+Monitoring transitions
+
+Saurabh Hirani
+@sphirani
+saurabhhirani@bluejeansnet.com
+
+* Problem
+
+- What does it take to move from manual to automated to distributed monitoring?
+
+* Infrastructure to monitor
+
+- AWS
+- VMware
+- Distributed network devices
+- Third party services
+- All of the above in multiple environments
+
+* Monitoring requirements
+
+- One ring to bind them all
+- Multiple notifiers:
+  - Chat
+  - Email
+  - Phone calls
+
+* Pre-nirvana setup
+
+- One big, bad nagios host monitoring everything
+- Thousands of hosts, tens of thousands of checks
+- Hosts, hostgroups, checks, scripts added manually
+- Configs scattered through the filesystem
+- Developers raise monitoring tickets with each release
+
+* Face it
+
+- It works
+
+* Because...
+
+.image images/sardonic-server-users.png
+
+* The price you pay
+
+- How do I add 100 new hosts in an environment?
+- How do I remove decomissioned hosts?
+- Why do I need to write 95% similar code for two similar checks?
+- How do I monitor dynamic environments - AWS autoscaling groups?
+
+* Don't even get started on
+
+- Runbooks
+- High availability
+- Distributed checks
+- REST APIs to build tools on
+- Non OPS perspectives
+
+* Why don't you just...
+
+- Use chef, puppet, etc. to pull out the information?
+- Use a CMDB?
+- Use X tool? - it's so nice and shiny
+
+* Debunking
+
+- Everything is not cheffed e.g. network devices
+- CMDBs should drive server provisioning and not the other way round
+- New tools are an easy diversion
+
+* The hard truth
+
+- Realize that monsters are not born - they are created
+- Buckle up and clean up the mess
+- Finish what you start
+
+* Better said than done
+
+- Monitoring systems don't have a downtime
+- Transparent cutover expected
+- Show measurable progress
+
+* Black box to break
+
+- Build a parallel setup and cutover
+
+* Clean the peripheral environment
+
+- Find extra packages - nagios-server-plugins
+- Find extra modules - python, ruby, etc.
+- Package your client/server plugins
+- Demo: fpm intro
+
+* Measure
+
+- Write dirty scripts, glue code, do what it takes to take stock
+- Categorize - hosts, hostgroups, checks, environments
+- Demo: nagios-api, nagira intro
+
+* Decide your monitoring strategy
+
+- Monitor hosts matching X criteria
+- Equally important to match ignore parameters
+- Make config management systems have "monitorable" data
+- Choose your tool - your mileage may vary
+- Demo: icinga2 for above reasoning
+
+* Know your sources of truth
+
+- Everything is not everywhere
+- Config management systems - chef, puppet, etc
+- Cloud providers - AWS, VMWare, etc
+- CMDB prelimnary population - Device42
+- Manual - ignore or fix and forget
+
+* Talk to your dev teams
+
+- One life is too short to write json parsing code for each check
+- HTTP codes are a feature
+- I am no microservices expert but I want uniform uris
+- Good time to decide on metrics to monitor
+- Demo: jsonalyzer
+
+* Know what you will break
+
+- No one has a single qa, stage, prod
+- Multiple environments to cutover from
+- Buy in on what you can break
+
+* Heads down, execution time
+
+- Demo: icinga2 cookbook basic structure
+
+* Progressive cutover
+
+- Demo: nagios-api disable active checks demo
+
+* Distributed checks
+
+- Demo: master-slave setup
+
+* The fun stuff
+
+- It's fun because you have solid foundation
+- Chat bots
+- Meta checks
+- REST API tools - upgrades, downtimes, ASG monitoring
+.link https://github.com/saurabh-hirani/icinga2-api-examples icinga2-api-examples
+.link https://github.com/saurabh-hirani/icinga2_api icinga2_api
+
+* Conclusion
+
+- Cleanup is insightful
+- Automate for the maintainers 
+- Categorize by attributes
+- Catch yourself cheating
+- Icinga2 is fun!
