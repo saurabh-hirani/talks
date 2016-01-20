@@ -83,6 +83,14 @@ saurabhhirani@bluejeansnet.com
 
 - Build a parallel setup and cutover
 
+* Revisit your monitoring strategy
+
+- Monitor hosts matching X criteria
+- Equally important to match ignore parameters
+- Make config management systems have "monitorable" data
+- Choose your tool - your mileage may vary
+- Demo: icinga2 for above reasoning
+
 * Clean the peripheral environment
 
 - Find extra packages - nagios-server-plugins
@@ -95,14 +103,6 @@ saurabhhirani@bluejeansnet.com
 - Write dirty scripts, glue code, do what it takes to take stock
 - Categorize - hosts, hostgroups, checks, environments
 - Demo: nagios-api, nagira intro
-
-* Decide your monitoring strategy
-
-- Monitor hosts matching X criteria
-- Equally important to match ignore parameters
-- Make config management systems have "monitorable" data
-- Choose your tool - your mileage may vary
-- Demo: icinga2 for above reasoning
 
 * Know your sources of truth
 
