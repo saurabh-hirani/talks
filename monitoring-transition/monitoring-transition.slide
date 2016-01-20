@@ -136,7 +136,7 @@ saurabhhirani@bluejeansnet.com
 
 * Distributed checks
 
-- Demo: master-slave setup
+- Out of the box in icinga2
 
 * The fun stuff
 
@@ -154,3 +154,11 @@ saurabhhirani@bluejeansnet.com
 - Categorize by attributes
 - Catch yourself cheating
 - Icinga2 is fun!
+
+* Thank you - Q & A
+
+* Distributed checks
+
+- Demo: master-slave setup
+
+
