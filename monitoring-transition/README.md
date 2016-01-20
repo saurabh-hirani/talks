@@ -1,4 +1,5 @@
-#### The transition: Manual => Automated => Distributed monitoring
+#### Title
+The transition: Manual => Automated => Distributed monitoring
 
 #### Objective
 Everyone talks the benefits of having an automated monitoring system in place - one which can discover
