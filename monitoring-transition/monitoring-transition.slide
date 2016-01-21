@@ -16,14 +16,6 @@ saurabhhirani@bluejeansnet.com
 - Third party services
 - All of the above in multiple environments
 
-* Monitoring requirements
-
-- One ring to bind them all
-- Multiple notifiers:
-  - Chat
-  - Email
-  - Phone calls
-
 * Pre-nirvana setup
 
 - One big, bad nagios host monitoring everything
@@ -65,7 +57,7 @@ saurabhhirani@bluejeansnet.com
 
 - Everything is not cheffed e.g. network devices
 - CMDBs should drive server provisioning and not the other way round
-- New tools are an easy diversion
+- New tools are good but take them all the way
 
 * The hard truth
 
@@ -78,6 +70,13 @@ saurabhhirani@bluejeansnet.com
 - Monitoring systems don't have a downtime
 - Transparent cutover expected
 - Show measurable progress
+
+* What you are really solving
+
+- Is everything "monitorable"?
+- Watching your infrastructure grow organically
+- Finding and killing stale nodes, redundant servers
+- A foundation for everyone
 
 * Black box to break
 
