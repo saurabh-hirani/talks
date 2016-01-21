@@ -136,6 +136,7 @@ saurabhhirani@bluejeansnet.com
 * Distributed checks
 
 - Out of the box in icinga2
+- If you designed the previous steps correctly, you have horizontal scalability
 
 * The fun stuff
 
