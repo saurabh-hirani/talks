@@ -129,19 +129,23 @@ saurabhhirani@bluejeansnet.com
 - Multiple environments to cutover from
 - Target the low hanging fruits
 
-* Where are we?
+* Homework done till now
 
 - A clean server raring to go
 - Know how on what to pull from where
-- Categorized checks
+- Standardized and categorized checks
+- First target environment
 
 * Heads down, execution time
 
+- One DB at a time - Chef, AWS, etc.
 - Demo: icinga2 cookbook basic structure
 
 * Progressive cutover
 
+- One environment a time. 
 - Demo: nagios-api disable active checks demo
+- Go back to the previous slide
 
 * Futureproof - Detect manual errors
 
