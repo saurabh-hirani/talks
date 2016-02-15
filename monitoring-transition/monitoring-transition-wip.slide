@@ -167,8 +167,8 @@ saurabhhirani@bluejeansnet.com
 
 * The fun stuff
 
-- Chat bots - lita, errbot
-- Meta checks - runbooks, inframer rules
+- Chat bots - hubot, lita, errbot
+- Meta checks - runbook alerts, inframer rules
 - REST API tools - upgrades, downtimes, ASG monitoring
 .link https://github.com/saurabh-hirani/icinga2-api-examples icinga2-api-examples
 .link https://github.com/saurabh-hirani/icinga2_api icinga2_api
