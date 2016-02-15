@@ -87,6 +87,7 @@ saurabhhirani@bluejeansnet.com
 - Monitor hosts where X == Y
 - Equally important ignore hosts where A == B
 - Can it pull data from multiple DBs (Chef, AWS, etc.)
+- Different levels of grouping - location, functionality, product, etc.
 - Choice: icinga2 for above reasoning
 
 * Black box to break
