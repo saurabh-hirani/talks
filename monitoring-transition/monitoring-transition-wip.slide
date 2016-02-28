@@ -55,6 +55,10 @@ saurabh.hirani@gmail.com
 - How do I monitor dynamic environments - AWS autoscaling groups?
 - How do I build tooling around it?
 
+* Sink this in
+
+- That which monitored snowflakes is now a snowflake which no one monitors
+
 * Why don't you just...
 
 - Use chef, puppet, etc. to pull out all the information?
@@ -164,6 +168,10 @@ saurabh.hirani@gmail.com
 
   - “All happy families are alike; each unhappy family is unhappy in its own way.”
     Leo Tolstoy
+
+  happy == automated
+  unhappy == manual
+  family == monitoring setup
 
 - Catch me to talk about your manual monitoring pain points
 - Questions?
