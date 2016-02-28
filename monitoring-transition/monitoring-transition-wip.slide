@@ -2,7 +2,7 @@ Monitoring transition
 
 Saurabh Hirani
 @sphirani
-saurabhhirani@bluejeansnet.com
+saurabh.hirani@gmail.com
 
 * 
 
@@ -11,6 +11,18 @@ saurabhhirani@bluejeansnet.com
 * Problem
 
 - What does it take to move from manual to automated to distributed monitoring?
+
+* What this talk is about
+
+- Questions to ask yourself if you monitor manually
+- Where to start, how to measure progress, how to cutover?
+- Generic learnings with demos you can apply today
+
+* What this talk is NOT about
+
+- X vs Y
+- Yet another Nagios rant
+- Yet another automated monitoring benefits hand waving
 
 * Infrastructure in context
 
@@ -26,13 +38,11 @@ saurabhhirani@bluejeansnet.com
 - Thousands of hosts, tens of thousands of checks
 - Hosts, hostgroups, checks, scripts added manually
 - Configs scattered through the filesystem
-- Developers raise monitoring tickets with each release
+- No self service, blocked by the in-house scapegoat
 
 * Face it
 
-- It works
-
-* Because...
+- It works because...
 
 .image images/sardonic-server-users.png
 
@@ -41,28 +51,14 @@ saurabhhirani@bluejeansnet.com
 - How do I add 100 new hosts in an environment?
 - How do I get to know about decomissioned hosts?
 - How do I monitor dynamic environments - AWS autoscaling groups?
-- Why do I need to write 95% similar code for two similar checks?
 - We added 2 new switches - are they monitored?
-
-* Don't even get started on
-
-- Runbooks
-- High availability
-- Distributed checks
-- REST APIs to build tools on
-- Non OPS perspectives
+- How do I build tooling around it?
 
 * Why don't you just...
 
 - Use chef, puppet, etc. to pull out all the information?
 - Use a CMDB?
 - Use X tool? - it's so nice and shiny
-
-* Debunking
-
-- Everything is not cheffed e.g. network devices, snowflakes
-- CMDB - if you had a good one - you wouldn't be in this mess
-- Will tool X cleanup the manually maintained mess? If yes, go for it!
 
 * The hard truth
 
@@ -79,7 +75,8 @@ saurabhhirani@bluejeansnet.com
 * What you are really solving
 
 - Audit - Is everything "monitorable"?
-- Cleanup - Finding and killing stale nodes, redundant servers
+- Fix what you can - clean AWS tags, chef roles, etc.
+- Zoom out and see patterns
 - Rinse, repeat == everything is monitorable
 
 * Revisit your monitoring strategy
@@ -88,40 +85,36 @@ saurabhhirani@bluejeansnet.com
 - Equally important ignore hosts where A == B
 - Pull data from multiple DBs (Chef, AWS, etc.)
 - Different levels of grouping - location, functionality, product, etc.
-- Choice: icinga2 for above reasoning
-
-* Black box to break
-
-- Build a parallel setup and cutover
+- Choice: icinga2
 
 * Where do I start?
 
-- Take stock - write dirty scripts, glue code, do what it takes
-- Categorize - hosts, hostgroups, checks, environments
-- Demo: nagios-api, nagira
-
-* Charity begins at home
-
-- Consolidate server side checks
-- Distribute client side checks
-- Package your plugins and their configs
-- == A server with no checks but everything that's needed to run them.
-- Demo: dockerized fpm
+- Take stock
+- Demo: inframer, nagios-api, nagira
 
 * Everything is not everywhere
 
 - Config management systems - chef, puppet, etc
 - Cloud providers - AWS, VMWare, etc
 - CMDB prelimnary population - Device42
-- Manual - ignore or fix and forget
-- Notes to bring it all under one roof
+- Snowflakes
+- Demo: icinga2 multi DB collection
 
-* One life is too short to write boilerplate json
+* Fix legacy check scripts
 
-- HTTP codes are a feature
-- I am no microservices expert but I want uniform uris
-- Good time to decide on metrics to monitor
+- Microservices? 
+- Uniform URIs!
+- HTTP status codes!
+- One life is too short to write boilerplate json
+- Fix it while you can
 - Demo: jsonalyzer
+
+* Consolidate and distribute
+
+- Consolidate server side checks
+- Distribute client side checks
+- Package your plugins and their configs
+- Demo: dockerized fpm
 
 * Buy in on what you can break
 
@@ -131,29 +124,16 @@ saurabhhirani@bluejeansnet.com
 
 * Homework done till now
 
-- A clean server raring to go
-- Know how on what to pull from where
-- Standardized and categorized checks
-- First target environment
+- Everything is not everywhere
+- Fix legacy check scripts
+- Consolidate and distribute
+- Buy in on what you can break
 
 * Heads down, execution time
-
-- One DB at a time - Chef, AWS, etc.
-- Demo: icinga2 cookbook basic structure
-
-* Progressive cutover
-
-- One environment a time. 
-- Demo: nagios-api disable active checks demo
-- Go back to the previous slide
-
-* Futureproof - Detect manual errors
-
-- Violaters violate
-- Abiders abide
-- Fixers fix
-- Show me the numbers!
-- Demo: inframer rule checkers
+ 
+- Add, deploy, compare, repeat
+- Progressive cutover
+- Demo: nagios, icinga2, inframer
 
 * Monitor the monitor
 
@@ -161,14 +141,14 @@ saurabhhirani@bluejeansnet.com
 
 * Distributed checks
 
-- Out of the box in icinga2
+- One master, multiple slaves - icinga2 feature
 - If you designed the previous steps correctly, horizontal scalability is a side effect
 - Distributed monitoring != Distributed checks
 
 * The fun stuff
 
-- Chat bots - hubot, lita, errbot
-- Meta checks - runbook alerts, inframer rules
+- It's fun because you have a solid foundation
+- Chat bots integration
 - REST API tools - upgrades, downtimes, ASG monitoring
 .link https://github.com/saurabh-hirani/icinga2-api-examples icinga2-api-examples
 .link https://github.com/saurabh-hirani/icinga2_api icinga2_api
@@ -180,4 +160,10 @@ saurabhhirani@bluejeansnet.com
 - Catch yourself cheating
 - The rent is due everyday
 
-* Thank you - Q & A
+* When are you starting?
+
+  - “All happy families are alike; each unhappy family is unhappy in its own way.”
+    Leo Tolstoy
+
+- Catch me to talk about your manual monitoring pain points
+- Questions?
