@@ -34,7 +34,7 @@ saurabh.hirani@gmail.com
 
 * Pre-nirvana setup
 
-- One big, bad nagios host monitoring everything
+- One big, bad icinga (1.x - nagios compat) host
 - Thousands of hosts, tens of thousands of checks
 - Hosts, hostgroups, checks, scripts added manually
 - Configs scattered through the filesystem
@@ -49,10 +49,10 @@ saurabh.hirani@gmail.com
 
 * The price
 
-- How do I add 100 new hosts in an environment?
-- How do I get to know about decomissioned hosts?
+- How do I monitor the 100 new hosts I added yesterday?
+- The network team added 2 new switches - are they monitored?
+- Why am I getting alerts about decomissioned hosts?
 - How do I monitor dynamic environments - AWS autoscaling groups?
-- We added 2 new switches - are they monitored?
 - How do I build tooling around it?
 
 * Why don't you just...
@@ -107,7 +107,7 @@ saurabh.hirani@gmail.com
 - Uniform URIs!
 - HTTP status codes!
 - One life is too short to write boilerplate json
-- Fix it while you can
+- Fixing it - a hard pre-requisite
 - Demo: jsonalyzer
 
 * Consolidate and distribute
@@ -134,7 +134,7 @@ saurabh.hirani@gmail.com
  
 - Add, deploy, compare, repeat
 - Progressive cutover
-- Demo: nagios, icinga2, inframer
+- Demo: icinga, icinga2, inframer, icinga external-cmds
 
 * Monitor the monitor
 
