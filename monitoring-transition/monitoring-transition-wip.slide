@@ -38,7 +38,8 @@ saurabh.hirani@gmail.com
 - Thousands of hosts, tens of thousands of checks
 - Hosts, hostgroups, checks, scripts added manually
 - Configs scattered through the filesystem
-- No self service, blocked by the in-house scapegoat
+- No self service
+- Blocked by the in-house scapegoat(s)
 
 * Face it
 
