@@ -49,25 +49,19 @@ saurabh.hirani@gmail.com
 
 * The price
 
-- How do I monitor the 100 new hosts I added yesterday?
-- The network team added 2 new switches - are they monitored?
+- Are the 100 new hosts I added over the weekend monitored?
+- The network team added 2 new switches - they are monitored, right?
 - Why am I getting alerts about decomissioned hosts?
-- How do I monitor dynamic environments - AWS autoscaling groups?
 - How do I build tooling around it?
 
 * Sink this in
 
-- That which monitored snowflakes is now a snowflake which no one monitors
-
-* Why don't you just...
-
-- Use chef, puppet, etc. to pull out all the information?
-- Use a CMDB?
-- Use X tool? - it's so nice and shiny
+- That which monitors snowflakes becomes a snowflake that no one monitors
+- Don't walk into an antique shop and expect something new
 
 * The hard truth
 
-- Realize that monsters are not born - they are created
+- Monsters are not born. They are created. One git commit at a time.
 - Buckle up and clean up the mess
 - Finish what you start
 
@@ -80,7 +74,7 @@ saurabh.hirani@gmail.com
 * What you are really solving
 
 - Audit - Is everything "monitorable"?
-- Fix what you can - clean AWS tags, chef roles, etc.
+- Fix what you can - clean chef roles, environments, AWS tags, etc.
 - Zoom out and see patterns
 - Rinse, repeat == everything is monitorable
 
@@ -89,55 +83,57 @@ saurabh.hirani@gmail.com
 - Monitor hosts where X == Y
 - Equally important ignore hosts where A == B
 - Pull data from multiple DBs (Chef, AWS, etc.)
-- Different levels of grouping - location, functionality, product, etc.
+- Different levels of host grouping - location, functionality, product, etc.
+- How cleanly does it fit into my existing ecosystem
 - Choice: icinga2
+- Demo: sample config of host and service
 
-* Where do I start?
+* Where is my checklist?
 
-- Take stock
-- Demo: inframer, nagios-api, nagira
+.link https://trello.com/b/CS2kmrSE Armchair heavy lifting checklist
 
-* Everything is not everywhere
+* Heads down homework - I
 
-- Config management systems - chef, puppet, etc
-- Cloud providers - AWS, VMWare, etc
-- CMDB prelimnary population - Device42
-- Snowflakes
-- Demo: icinga2 multi DB collection
+- Find manually added hosts and checks
+- Categorize hosts by sources
+- Categorize hostgroups by host attributes
+- Categorize checks by hostgroups
+- Audit check scripts
 
-* Fix legacy check scripts
-
-- Microservices? 
-- Uniform URIs!
-- HTTP status codes!
-- One life is too short to write boilerplate json
-- Fixing it - a hard pre-requisite
-- Demo: jsonalyzer
-
-* Consolidate and distribute
+* Heads down homework - II
 
 - Consolidate server side checks
 - Distribute client side checks
-- Package your plugins and their configs
-- Demo: dockerized fpm
+- Sideline the snowflakes
+- Build a parallel setup
 
-* Buy in on what you can break
+* Parallel setup
 
+- Configs generated from host sources
+- Server side checks through packages
+- Client side checks through individual recipes
+- Notifications to a closed group
+- A daemon which adds, edits, delete hosts as they come and go
+- Ready to cutover
+
+* Walk up and buy in
+
+- on what you can break
 - Multiple environments to cutover from
 - Target the low hanging fruits
 
-* Homework done till now
+* Where is my checklist?
 
-- Everything is not everywhere
-- Fix legacy check scripts
-- Consolidate and distribute
-- Buy in on what you can break
+.link https://trello.com/b/tnqDePLZ Progressive cutover checklist
 
-* Heads down, execution time
- 
-- Add, deploy, compare, repeat
-- Progressive cutover
-- Demo: inframer, icinga external-cmds
+* Heads down, cutover time
+
+- Prioritize order
+- icinga2: enable notifications
+- nagios: disable notifications
+- automate to rollback
+- bake and kill
+- Demo: nagios-to-icinga2
 
 * Monitor the monitor
 
@@ -147,13 +143,11 @@ saurabh.hirani@gmail.com
 
 - One master, multiple slaves - icinga2 feature
 - If you designed the previous steps correctly, horizontal scalability is a side effect
-- Distributed monitoring != Distributed checks
 
 * The fun stuff
 
 - It's fun because you have a solid foundation
-- Chat bots integration
-- REST API tools - upgrades, downtimes, ASG monitoring
+- REST API tools - chat bots, upgrades, downtimes, notifications
 .link https://github.com/saurabh-hirani/icinga2-api-examples icinga2-api-examples
 .link https://github.com/saurabh-hirani/icinga2_api icinga2_api
 
