@@ -88,9 +88,15 @@ saurabh.hirani@gmail.com
 - Choice: icinga2
 - Demo: sample config of host and service
 
-* Where is my checklist?
+* The process
 
-.link https://trello.com/b/CS2kmrSE Armchair heavy lifting checklist
+- Armchair heavy lifting
+- Build a parallel setup
+- Progressive cutover
+
+* Armchair heavy lifting
+
+.link https://trello.com/b/CS2kmrSE Checklist
 
 * Heads down homework - I
 
@@ -122,9 +128,9 @@ saurabh.hirani@gmail.com
 - Multiple environments to cutover from
 - Target the low hanging fruits
 
-* Where is my checklist?
+* Progressive cutover
 
-.link https://trello.com/b/tnqDePLZ Progressive cutover checklist
+.link https://trello.com/b/tnqDePLZ Checklist
 
 * Heads down, cutover time
 
