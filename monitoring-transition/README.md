@@ -16,5 +16,4 @@ icinga2 infrastructure. This talk is going to cover the following topics:
 - A manually maintained nagios setup and its limitations
 - Prepping for moving to an automated icinga2 setup
 - Collating data from multiple host sources
-- Working with development teams for service healthstatus monitoring
 - Progressive cutover from manual to automated monitoring
