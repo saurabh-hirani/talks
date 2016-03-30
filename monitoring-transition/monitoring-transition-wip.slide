@@ -17,7 +17,7 @@ saurabh.hirani@gmail.com
 - Questions to ask yourself if you monitor manually
 - Where to start, how to measure progress, how to cutover?
 - A -> B - problems of point A, process to transition to point B
-- A == nagios (replace by your manually setup monitoring solution)
+- A == icinga (nagios-compatible, replace by your manually setup monitoring solution)
 - B == icinga2 (replace by what you want to automate)
 
 * What this talk is NOT about
@@ -139,13 +139,13 @@ saurabh.hirani@gmail.com
 .link https://trello.com/b/tnqDePLZ Checklist
 - Demos:
   - icinga2_api
-  - nagios-to-icinga2
+  - icinga-to-icinga2
 
 * Heads down, cutover time
 
 - Prioritize order
 - icinga2: enable notifications
-- nagios: disable notifications
+- icinga: disable notifications
 - automate to rollback
 - bake and kill
 
