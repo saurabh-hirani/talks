@@ -16,7 +16,9 @@ saurabh.hirani@gmail.com
 
 - Questions to ask yourself if you monitor manually
 - Where to start, how to measure progress, how to cutover?
-- Generic learnings with demos you can apply today
+- A -> B - problems of point A, process to transition to point B
+- A == nagios (replace by your manually setup monitoring solution)
+- B == icinga2 (replace by what you want to automate)
 
 * What this talk is NOT about
 
@@ -125,8 +127,6 @@ saurabh.hirani@gmail.com
 - Notifications to a closed group
 - A daemon which adds, edits, delete hosts as they come and go
 - Ready to cutover
-- Demo: 
-  - bjn_icinga2 cookbook
 
 * Walk up and buy in
 
