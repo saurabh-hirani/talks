@@ -1,0 +1,35 @@
+icinga:
+
+nagira:
+
+  curl http://localhost:4567/_objects/hosts/_full | python -m json.tool | less
+  curl http://localhost:4567/_objects/services/_full | python -m json.tool | less
+
+nagios-api:
+
+  curl http://localhost:6315/state
+
+icinga2:
+
+  icinga2_api -p docker
+
+cutover:
+
+  icinga2:
+
+    icinga2_api -p docker -a update -u /v1/objects/hosts -d '{"attrs": {"enable_notifications": true}}'
+    icinga2_api -p docker -a update -u /v1/objects/services -d '{"attrs": {"enable_notifications": true}}'
+
+  icinga:
+
+    curl -X POST  -H "Content-type: application/json;" -d '{"host": "localhost", "services_too": true}' http://icinga.test.com:8080/disable_notifications/
+
+rollback:
+  icinga2:
+
+    icinga2_api -p docker -a update -u /v1/objects/hosts -d '{"attrs": {"enable_notifications": false}}'
+    icinga2_api -p docker -a update -u /v1/objects/services -d '{"attrs": {"enable_notifications": false}}'
+
+  icinga:
+
+    curl -X POST  -H "Content-type: application/json;" -d '{"host": "localhost", "services_too": true}' http://icinga.test.com:8080/enable_notifications/
