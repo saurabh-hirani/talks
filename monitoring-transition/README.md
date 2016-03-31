@@ -17,3 +17,61 @@ icinga2 infrastructure. This talk is going to cover the following topics:
 - Prepping for moving to an automated icinga2 setup
 - Collating data from multiple host sources
 - Progressive cutover from manual to automated monitoring
+
+#### Slides
+
+- http://saurabh-hirani.github.io/slides/monitoring-transition.html#/
+
+#### Talk
+
+- TODO
+
+#### Host discovery in the manual setup
+
+- Start icinga docker image
+
+```
+$ docker run --privileged=true -p 8080:80 -p 4567:4567 -p 6315:6315  -v /data/icinga:/shared -i -t shirani/icinga-demo /bin/bash
+```
+
+- Start nagira in docker
+
+```
+$ RACK_ENV=production nagira
+```
+
+- Test nagira on host
+
+```
+$ curl http://localhost:4567/_objects/hosts/_list | python -m json.tool | less
+$ curl http://localhost:4567/_objects/hosts/_full | python -m json.tool | less
+$ curl http://localhost:4567/_objects/services/_list | python -m json.tool | less
+$ curl http://localhost:4567/_objects/services/_full | python -m json.tool | less
+```
+
+- Start nagios-api in docker
+
+```
+$ nagios-api  -s /var/lib/icinga/status.dat -p 6315 -c /var/lib/icinga/rw/icinga.cmd
+```
+
+- Test nagios-api on host
+
+```
+$ curl http://localhost:6315/state
+```
+
+#### Consolidate server side
+
+- jsonalyzer - https://github.com/saurabh-hirani/jsonalyzer
+
+- fpm - https://github.com/saurabh-hirani/fpm-docker-demo
+
+
+#### Parallel setup
+
+- TODO
+
+#### Progressive cutover
+
+- TODO
