@@ -26,6 +26,10 @@ icinga2 infrastructure. This talk is going to cover the following topics:
 
 - TODO
 
+#### Setup
+
+- TODO
+
 #### Host discovery in the manual setup
 
 - Start icinga docker image
@@ -43,9 +47,16 @@ $ RACK_ENV=production nagira
 - Test nagira on host
 
 ```
+# get list of hosts
 $ curl http://localhost:4567/_objects/hosts/_list | python -m json.tool | less
+
+# get detailed status of all hosts
 $ curl http://localhost:4567/_objects/hosts/_full | python -m json.tool | less
+
+# get list of services
 $ curl http://localhost:4567/_objects/services/_list | python -m json.tool | less
+
+# get detailed status of all services
 $ curl http://localhost:4567/_objects/services/_full | python -m json.tool | less
 ```
 
@@ -61,7 +72,7 @@ $ nagios-api  -s /var/lib/icinga/status.dat -p 6315 -c /var/lib/icinga/rw/icinga
 $ curl http://localhost:6315/state
 ```
 
-#### Consolidate server side
+#### Consolidate server side checks
 
 - jsonalyzer - https://github.com/saurabh-hirani/jsonalyzer
 
