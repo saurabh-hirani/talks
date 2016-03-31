@@ -26,7 +26,7 @@ icinga2 infrastructure. This talk is going to cover the following topics:
 
 - TODO
 
-#### Setup
+#### Demo setup
 
 - TODO
 
@@ -35,35 +35,37 @@ icinga2 infrastructure. This talk is going to cover the following topics:
 - Start icinga docker image
 
 ```
-$ docker run --privileged=true -p 8080:80 -p 4567:4567 -p 6315:6315  -v /data/icinga:/shared -i -t shirani/icinga-demo /bin/bash
+you@your-host:$ docker run --privileged=true -p 8080:80 -p 4567:4567 -p 6315:6315  -v /data/icinga:/shared -i -t shirani/icinga-demo /bin/bash
 ```
 
 - Start nagira in docker
 
 ```
-$ RACK_ENV=production nagira
+root@icinga-demo:/# RACK_ENV=production nagira
 ```
 
 - Test nagira on host
 
 ```
 # get list of hosts
-$ curl http://localhost:4567/_objects/hosts/_list | python -m json.tool | less
+you@your-host:$ curl http://localhost:4567/_objects/hosts/_list | python -m json.tool | less
 
 # get detailed status of all hosts
-$ curl http://localhost:4567/_objects/hosts/_full | python -m json.tool | less
+you@your-host:$ curl http://localhost:4567/_objects/hosts/_full | python -m json.tool | less
 
 # get list of services
-$ curl http://localhost:4567/_objects/services/_list | python -m json.tool | less
+you@your-host:$ curl http://localhost:4567/_objects/services/_list | python -m json.tool | less
 
 # get detailed status of all services
-$ curl http://localhost:4567/_objects/services/_full | python -m json.tool | less
+you@your-host$ curl http://localhost:4567/_objects/services/_full | python -m json.tool | less
 ```
 
 - Start nagios-api in docker
 
 ```
-$ nagios-api  -s /var/lib/icinga/status.dat -p 6315 -c /var/lib/icinga/rw/icinga.cmd
+you@your-host$ docker exec -it $(docker ps | grep 'shirani/icinga-demo' | cut -f1 -d' ') /bin/bash
+root@icinga-demo:/#
+root@icinga-demo:/# nagios-api  -s /var/lib/icinga/status.dat -p 6315 -c /var/lib/icinga/rw/icinga.cmd
 ```
 
 - Test nagios-api on host
