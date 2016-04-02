@@ -5,5 +5,3 @@
 ```
 # sudo ./start-container.sh
 ```
-
-- Update the icinga config outside the container - TODO

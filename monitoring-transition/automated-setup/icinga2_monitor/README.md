@@ -1,4 +1,7 @@
-# icinga2_monitor
+#### Demo setup of chef automated icinga2 host
 
-TODO: Enter the cookbook description here.
+- Start the vm
 
+```
+$ vagrant up
+```
