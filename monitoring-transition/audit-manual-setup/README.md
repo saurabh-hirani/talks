@@ -1,7 +1,5 @@
 ### Audit manual setup
 
-Supplments the demos in [Audit manual setup](http://saurabh-hirani.github.io/slides/monitoring-transition.html#/4) for the talk.
-
 Assumption: icinga container running as per - [icinga manual setup](https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition/icinga)
 
 ## Discover
