@@ -1,0 +1,37 @@
+{
+  "id": "redis-1",
+  "name": "redis-1",
+  "environment": "stage2",
+  "chef_environment": "stage2",
+  "run_list": [
+    "role[app]"
+  ],
+  "roles": [
+    "infra"
+  ],
+  "address": "127.0.0.1",
+  "os": "linux",
+  "automatic": {
+    "fqdn": "redis-1",
+    "network": {
+      "interfaces": {
+        "eth0": {
+          "addresses": {
+            "127.0.0.1": {
+            }
+          }
+        },
+        "eth1": {
+          "addresses": {
+            "127.0.0.1": {
+            }
+          }
+        }
+      }
+    },
+    "hostname": "redis-1",
+    "platform": "ubuntu",
+    "platform_family": "debian",
+    "platform_version": "12.04"
+  }
+}

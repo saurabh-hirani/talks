@@ -1,0 +1,9 @@
+{
+  "id": "stage2",
+  "name": "stage2",
+  "description": "test stage2 environment",
+  "default_attributes": {},
+  "override_attributes": {},
+  "chef_type": "environment",
+  "json_class": "Chef::Environment"
+}

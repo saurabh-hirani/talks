@@ -1,0 +1,12 @@
+name 'icinga2_monitor'
+maintainer 'Saurabh Hirani'
+maintainer_email 'saurabh.hirani@gmail.com'
+description 'Installs/Configures icinga2'
+long_description 'Installs/Configures icinga2'
+version '0.1.0'
+
+depends 'apache2'
+depends 'php'
+depends 'icinga2'
+depends 'chef-solo-search'
+depends 'apt'

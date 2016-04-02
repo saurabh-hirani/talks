@@ -1,0 +1,34 @@
+{
+  "id": "mssql-1",
+  "name": "mssql-1",
+  "environment": "stage1",
+  "chef_environment": "stage1",
+  "run_list": [
+    "role[mssql]"
+  ],
+  "roles": [
+    "mssql"
+  ],
+  "os": "windows",
+  "address": "127.0.0.1",
+  "automatic": {
+    "fqdn": "mssql-1",
+    "network": {
+      "interfaces": {
+        "eth0": {
+          "addresses": {
+            "127.0.0.1": {
+            }
+          }
+        },
+        "eth1": {
+          "addresses": {
+            "127.0.0.1": {
+            }
+          }
+        }
+      }
+    },
+    "hostname": "mssql-1"
+  }
+}

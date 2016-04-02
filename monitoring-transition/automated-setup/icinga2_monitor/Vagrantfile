@@ -1,0 +1,33 @@
+#!/usr/bin/env ruby
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
+ENV['PATH'] = '/opt/chefdk/bin:/usr/local/bin:/usr/bin:%s' % ENV['PATH']
+
+Vagrant.configure('2') do |config|
+  config.omnibus.chef_version = :latest
+  config.berkshelf.enabled = true
+  config.cache.auto_detect = true
+
+  config.vm.define 'vagrant' do |node|
+    node.vm.box = 'bento/ubuntu-12.04'
+    node.vm.hostname = 'vagrant'
+    node.vm.network :private_network, ip: '10.10.10.10'
+    node.vm.network :forwarded_port, guest: 80, host: 8085
+    node.vm.network :forwarded_port, guest: 5665, host: 5665
+    node.vm.provision :chef_solo do |chef|
+      chef.log_level = :debug
+      chef.json = {
+        apt: {
+          periodic_update_min_delay: 300
+        }
+      }
+      chef.data_bags_path = 'test/data_bags'
+      chef.environments_path = 'test/environments'
+      chef.run_list = %w(
+        recipe[chef-solo-search]
+        recipe[icinga2_monitor::default]
+      )
+    end
+  end
+end
