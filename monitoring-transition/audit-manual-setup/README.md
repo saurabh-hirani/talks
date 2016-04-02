@@ -1,12 +1,12 @@
 ### Audit manual setup
 
-Supplments the demos in [http://saurabh-hirani.github.io/slides/monitoring-transition.html#/4](Audit manual setup) for the talk.
+Supplments the demos in [Audit manual setup](http://saurabh-hirani.github.io/slides/monitoring-transition.html#/4) for the talk.
 
-Assumption: icinga container running as per - [https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition/icinga](icinga manual setup)
+Assumption: icinga container running as per - [icinga manual setup](https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition/icinga)
 
 ## Discover
 
-Peek under the hood. We are just using curl calls to [https://github.com/dmytro/nagira](nagira)
+Peek under the hood. We are just using curl calls to [nagira](https://github.com/dmytro/nagira)
 
 ```
 $ ./discover-hosts-list.sh
@@ -38,4 +38,4 @@ $ ./discover-services-details.sh
 
 ## Consolidate checks
 
-[https://github.com/saurabh-hirani/fpm-docker-demo](fpm-docker-demo)
+[fpm-docker-demo](https://github.com/saurabh-hirani/fpm-docker-demo)
