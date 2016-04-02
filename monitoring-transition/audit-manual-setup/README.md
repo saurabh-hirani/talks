@@ -1,5 +1,7 @@
 ### Audit manual setup
 
+Supplments the demos in [http://saurabh-hirani.github.io/slides/monitoring-transition.html#/4](Audit manual setup) for the talk.
+
 Assumption: icinga container running as per - [https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition/icinga](icinga manual setup)
 
 ## Discover
@@ -29,6 +31,10 @@ $ ./discover-services-list.sh
 ```
 $ ./discover-services-details.sh
 ```
+
+## Categorize
+
+- Now that you can discover hosts, hostgroups, checks - cateogrizing is a do-it-yourself job which varies as per the setup you have.
 
 ## Consolidate checks
 
