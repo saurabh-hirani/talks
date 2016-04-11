@@ -1,0 +1,27 @@
+#!/bin/bash
+
+usage="USAGE: $0 enable|disable hostgroup"
+
+if [[ $# -ne 2 ]]; then
+  echo $usage
+  exit 0
+fi
+
+action="$1"
+if [[ $action == 'enable' ]]; then
+  enable_notifs_val='true'
+elif [[ $action == 'disable' ]]; then
+  enable_notifs_val='false'
+else
+  echo "ERROR: Invalid value - $action"
+  echo "$usage"
+  exit 1
+fi
+
+hostgroup="$2"
+payload='{"filter": "\"__hostgroup__\" in host.groups", "attrs": {"enable_notifications": __enable_notifs_val__} }'
+payload=$(echo $payload | sed "s/__hostgroup__/$hostgroup/g")
+payload=$(echo $payload | sed "s/__enable_notifs_val__/$enable_notifs_val/g")
+
+icinga2_api -p vagrant -a update -u /v1/objects/hosts -d "$payload"
+icinga2_api -p vagrant -a update -u /v1/objects/services -d "$payload"

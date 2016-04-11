@@ -18,21 +18,25 @@
 Peek under the hood. We are just calling [icinga2_api](https://github.com/saurabh-hirani/icinga2_api)
 
 ```
-$ ./discover-hosts-list.sh
+$ ./disable-notifications
 ```
 
 ```
-$ ./discover-hosts-details.sh
+$ ./discover-hosts-list
 ```
 
 ```
-$ ./discover-hostgroups-list.sh
+$ ./discover-hosts-details
 ```
 
 ```
-$ ./discover-hostgroups-details.sh
+$ ./discover-hostgroups-list
 ```
 
 ```
-$ ./discover-services-details.sh
+$ ./discover-hostgroups-details
+```
+
+```
+$ ./discover-services-details
 ```

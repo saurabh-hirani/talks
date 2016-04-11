@@ -7,23 +7,23 @@ Assumption: icinga container running as per - [icinga manual setup](https://gith
 Peek under the hood. We are just using curl calls to [nagira](https://github.com/dmytro/nagira)
 
 ```
-$ ./discover-hosts-list.sh
+$ ./discover-hosts-list
 ```
 
 ```
-$ ./discover-hosts-details.sh
+$ ./discover-hosts-details
 ```
 
 ```
-$ ./discover-hostgroups-list.sh
+$ ./discover-hostgroups-list
 ```
 
 ```
-$ ./discover-hostgroups-details.sh
+$ ./discover-hostgroups-details
 ```
 
 ```
-$ ./discover-services-details.sh
+$ ./discover-services-details
 ```
 
 ## Categorize

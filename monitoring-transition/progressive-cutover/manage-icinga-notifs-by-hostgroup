@@ -1,0 +1,74 @@
+#!/usr/bin/env python
+
+import sys
+import json
+import requests
+
+def main():
+  """ Manage icinga notifications based on hostgroup """
+
+  usage = "%s enable|disable hostgroup" % __file__
+  if len(sys.argv) != 3:
+    print usage
+    sys.exit(1)
+
+  action = sys.argv[1]
+
+  enable_notifs = None
+  if action == 'enable':
+    enable_notifs = True
+  elif action == 'disable':
+    enable_notifs = False
+  else:
+    print 'ERROR: Invalid action - %s' % action
+    print usage
+    sys.exit(1)
+
+  icinga_host = '127.0.0.1'
+
+  # call nagira to get hostgroup - host mapping
+  nagira_port = 4567
+  response = requests.get('http://%s:%d/_objects/hostgroups/_full' % (icinga_host,
+                                                                      nagira_port))
+  hostgroups_data = response.json()
+
+  target_hostgroup = sys.argv[2]
+  if target_hostgroup.strip() == '':
+    print 'ERROR: No hostgroup provided'
+    print usage
+    sys.exit(2)
+
+  hostgroup_hosts = []
+
+  for hostgroup, hostgroup_data in hostgroups_data.iteritems():
+    if hostgroup == target_hostgroup:
+      if 'members' not in hostgroups_data[hostgroup]:
+        print 'ERROR: No members in %s' % target_hostgroup
+        hostgroups_data
+        sys.exit(1)
+      hostgroup_hosts.extend(hostgroups_data[hostgroup]['members'].split(','))
+
+  # for each host - call nagios-api to enable/disable notifications                                                                         
+  nagios_api_port = 6315
+
+  url = 'http://%s:%d' % (icinga_host, nagios_api_port)
+  if enable_notifs:
+    url += '/enable_notifications'
+  else:
+    url += '/disable_notifications'
+
+  payload = {
+    'services_too': 'true'
+  }
+  headers = {'Content-type': 'application/json;'}
+
+  for host in hostgroup_hosts:
+    print 'STATUS: checking %s' % host
+    payload['host'] = host
+    response = requests.post(url, data=json.dumps(payload), headers=headers)
+    if response.status_code != 200:
+      print 'ERROR: url - %s returned %d' % (url, response.status_code)
+      sys.exit(1)
+
+if __name__ == '__main__':
+  main()

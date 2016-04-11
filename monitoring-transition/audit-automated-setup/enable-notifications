@@ -1,0 +1,3 @@
+#!/bin/bash
+icinga2_api -p vagrant -a update -u /v1/objects/hosts -d '{"attrs": {"enable_notifications": true}}'
+icinga2_api -p vagrant -a update -u /v1/objects/services -d '{"attrs": {"enable_notifications": true}}'
