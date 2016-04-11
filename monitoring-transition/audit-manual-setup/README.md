@@ -11,19 +11,15 @@ $ ./discover-hosts-list.sh
 ```
 
 ```
-$ ./discover-hostgroups-list.sh
-```
-
-```
 $ ./discover-hosts-details.sh
 ```
 
 ```
-$ ./discover-hostgroups-details.sh
+$ ./discover-hostgroups-list.sh
 ```
 
 ```
-$ ./discover-services-list.sh
+$ ./discover-hostgroups-details.sh
 ```
 
 ```
