@@ -22,7 +22,7 @@ target_envs.each do |env|
       address host['address']
       check_command 'hostalive'
       groups [env, host['roles']].flatten
-      custom_vars :os => host['os']
+      custom_vars :os => host['os'], :roles => host['roles']
     end
   end
 end
