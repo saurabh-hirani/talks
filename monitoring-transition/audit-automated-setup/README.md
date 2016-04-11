@@ -13,7 +13,7 @@
   - Dummy nodes created [here](https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition/automated-setup/icinga2_monitor/test/data_bags/node) for local testing before uploading cookbook
   - [configure_checks.rb](https://github.com/saurabh-hirani/talks/blob/master/monitoring-transition/automated-setup/icinga2_monitor/recipes/configure_checks.rb)
 
-### CRUD API
+### REST API
 
 Peek under the hood. We are just calling [icinga2_api](https://github.com/saurabh-hirani/icinga2_api)
 
