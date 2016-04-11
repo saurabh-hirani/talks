@@ -1,0 +1,7 @@
+#!/bin/bash
+
+./manage-icinga-notifs-by-hostgroup enable app
+./manage-icinga-notifs-by-hostgroup enable infra
+./manage-icinga2-notifs-by-hostgroup disable app
+./manage-icinga2-notifs-by-hostgroup disable infra
+./manage-icinga2-notifs-by-hostgroup disable mssql

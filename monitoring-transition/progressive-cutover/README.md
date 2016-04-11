@@ -27,11 +27,14 @@ $ ./manage-icinga2-notifs-by-hostgroup enable infra
 $ ./manage-icinga-notifs-by-hostgroup disable infra
 ```
 
+### Enable all notifications on new:
+
+```
+$ ./enable-icinga2-notifications
+```
+
 ### Rollback
 
 ```
-$ ./manage-icinga-notifs-by-hostgroup app
-$ ./manage-icinga-notifs-by-hostgroup infra
-$ ./manage-icinga2-notifs-by-hostgroup app
-$ ./manage-icinga2-notifs-by-hostgroup infra
+$ ./rollback
 ```
