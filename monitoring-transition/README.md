@@ -1,5 +1,4 @@
-#### Title
-The transition: Manual => Automated => Distributed monitoring
+#### The transition: Manual => Automated => Distributed monitoring
 
 #### Objective
 Everyone talks the benefits of having an automated monitoring system in place - one which can discover
@@ -9,14 +8,15 @@ maintained monitoring system and showcased their battle scars for others to lear
 we are going to talk about.
 
 #### Description
-We moved our monitoring systems from a manually maintained nagios setup to an automated, distributed  
+We moved our monitoring setup from a manually maintained nagios setup to an automated, distributed  
 icinga2 infrastructure. This talk is going to cover the following topics:
 
 - The challenges of monitoring a distributed infrastructure
-- A manually maintained nagios setup and its limitations
+- A manually maintained icinga setup and its limitations
 - Prepping for moving to an automated icinga2 setup
 - Collating data from multiple host sources
 - Progressive cutover from manual to automated monitoring
+- Foundation laid for distributed monitoring
 
 #### Slides
 
