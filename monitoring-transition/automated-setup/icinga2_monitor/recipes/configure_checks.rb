@@ -3,6 +3,7 @@ icinga2_applyservice 'check_http' do
   check_command 'http'
   custom_vars :http_uri => '/icinga2-classicui'
   assign_where ['"app" in host.vars.roles']
+  ignore_where ['host.name == "app-3"']
 end
 
 icinga2_applyservice 'check_procs' do
