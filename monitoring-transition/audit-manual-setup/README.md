@@ -1,6 +1,6 @@
 ### Audit manual setup
 
-Assumption: icinga container running as per - [icinga manual setup](https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition/icinga)
+Assumption: icinga container running as per - [icinga manual setup](https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition/manual-setup)
 
 ## Discover
 
