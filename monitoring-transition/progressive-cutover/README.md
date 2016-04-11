@@ -3,7 +3,7 @@
 ### Assumptions:
   - Your [manual](https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition/audit-manual-setup) and [automated](https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition/audit-automated-setup) is up and running
 
-### Enable notifications-by-hostgroup on new:
+### Enable notifications on new:
 
 Peek under the hood. We are using 
 
