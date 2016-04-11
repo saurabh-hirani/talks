@@ -10,6 +10,7 @@
 
 ### Decoupled check configs
 
+  - Dummy nodes created [here](https://github.com/saurabh-hirani/talks/tree/master/monitoring-transition/automated-setup/icinga2_monitor/test/data_bags/node) for local testing before uploading cookbook
   - [configure_checks.rb](https://github.com/saurabh-hirani/talks/blob/master/monitoring-transition/automated-setup/icinga2_monitor/recipes/configure_checks.rb)
 
 ### CRUD API
