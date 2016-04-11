@@ -32,4 +32,4 @@ $ ./discover-services-details.sh
 
 ## Consolidate checks
 
-[fpm-docker-demo](https://github.com/saurabh-hirani/fpm-docker-demo)
+- Package the client/server check scripts and their configs - [fpm-docker-demo](https://github.com/saurabh-hirani/fpm-docker-demo)
