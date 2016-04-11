@@ -5,7 +5,7 @@ ENV['VAGRANT_DEFAULT_PROVIDER'] = 'virtualbox'
 ENV['PATH'] = '/opt/chefdk/bin:/usr/local/bin:/usr/bin:%s' % ENV['PATH']
 
 Vagrant.configure('2') do |config|
-  config.omnibus.chef_version = :latest
+  config.omnibus.chef_version = '12.8.1'
   config.berkshelf.enabled = true
   config.cache.auto_detect = true
 
