@@ -30,6 +30,6 @@ $ ./discover-services-details.sh
 
 - Now that you can discover hosts, hostgroups, checks - cateogrizing is a do-it-yourself job which varies as per the setup you have.
 
-## Consolidate checks
+## Consolidate
 
 - Package the client/server check scripts and their configs - [fpm-docker-demo](https://github.com/saurabh-hirani/fpm-docker-demo)
