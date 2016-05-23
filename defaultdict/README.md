@@ -122,3 +122,7 @@ defaultdict(<function makehash at 0x7f36d3443758>, {})
   }
 }
 ```
+
+## Read more at
+
+[Stackoverflow - how does defaultdict work](http://stackoverflow.com/questions/5900578/how-does-collections-defaultdict-work)
