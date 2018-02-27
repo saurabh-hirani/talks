@@ -18,8 +18,11 @@ saurabhhirani@bluejeansnet.com
  
 * Expectations from a cli - I:
 
-- long and short options
-  -h / --help
+- argument, options, flags 
+
+  todo create $task
+  todo create $task --tag name
+  todo create $task --tag name --verbose
 
 - Multiple arguments
   --names a b c
@@ -66,6 +69,7 @@ saurabhhirani@bluejeansnet.com
 .link http://docopt.org/ docopt
 - More of command line description language
 - Translates documentation into command line parser  
+- Uses
 - Extremely easy to learn
 - Available for different languages
 
@@ -84,5 +88,13 @@ saurabhhirani@bluejeansnet.com
 - See the references section for more details
 
 * Demo  
+
+* argparse
+
+* docopt
+
+.link https://github.com/docopt/docopt/issues/133 from __future__ bug
+
+* click
 
 .link 
