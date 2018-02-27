@@ -10,13 +10,13 @@ Usage:
     httpbin --version
 
 Options:
-    -h|--help                  show this help text
-    <status_code>              status code to return
-    <json_data>                json_data to pass
-    -v, --version              print this version
-    -u,--username <username>   request username
-    -p,--password <password>   request password
-    -t,--api-token <api_token> api token
+    -h|--help                  show this help text.
+    <status_code>              status code to return.
+    <json_data>                json_data to pass.
+    -v, --version              print this version.
+    -u,--username <username>   request username. [default: admin]
+    -p,--password <password>   request password. [default: admin]
+    -t,--api-token <api_token> api token. [default: token]
 '''
 
 from __future__ import print_function

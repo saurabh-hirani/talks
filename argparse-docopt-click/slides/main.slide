@@ -89,12 +89,22 @@ saurabhhirani@bluejeansnet.com
 
 * Demo  
 
-* argparse
+* docopt demo
 
-* docopt
+.link https://httpbin.org/ Based on httpbin
+.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/docopt/cli.py code
+.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/docopt/test.sh test
+.link https://github.com/docopt/docopt/issues/133 from __future__ gotcha
 
-.link https://github.com/docopt/docopt/issues/133 from __future__ bug
+* docopt features
 
-* click
+.link http://docopt.org/ docopt site
+.link https://github.com/docopt/docopt/tree/master/examples gitrepo examples
 
-.link 
+* argparse demo
+
+* argparse features
+
+* click demo
+
+* click features
