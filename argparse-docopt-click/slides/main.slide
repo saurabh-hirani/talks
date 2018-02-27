@@ -7,7 +7,7 @@ saurabh.hirani@gmail.com
 * Agenda:
 
 - Expectations from a cli
-- Steal from the masters
+- Our focus areas
 - Intros - argparse, docopt, click
 - Demos  - argparse, docopt, click
 - When to use what
@@ -44,10 +44,12 @@ saurabh.hirani@gmail.com
   command specific functions?
   command specific files?
 
-* Steal from the masters
+* Our focus areas
 
-- git
-- aws
+- learning curve
+- subcommand support
+- ease of input validation
+- code organization
 
 * argparse intro
 
