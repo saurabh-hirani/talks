@@ -6,6 +6,8 @@ import common.utils as utils
 import argparse
 import sys
 
+VERBOSE=False
+
 def call_url(args):
   ''' Call the target url '''
   pass
@@ -59,6 +61,9 @@ def load_args(args):
                              help='api-token', type=utils.validate_uuid_arg)
 
   args = vars(parser.parse_args())
+
+  global VERBOSE
+  VERBOSE = args['verbose']
 
   if not('username' in args and 'password' in args and 'api_token' in args):
     return args

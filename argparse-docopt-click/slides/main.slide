@@ -22,7 +22,7 @@ saurabhhirani@bluejeansnet.com
 
   todo create $task
   todo create $task --tag name
-  todo create $task --tag name --verbose
+  todo --verbose create $task --tag name
 
 - Multiple arguments
   --names a b c
@@ -52,12 +52,6 @@ saurabhhirani@bluejeansnet.com
 
 - git
 - aws
-
-* The todo app
-
-- Simple todo app
-- REST API
-- Create, Read, Update, Delete
 
 * argparse intro
 
@@ -89,22 +83,45 @@ saurabhhirani@bluejeansnet.com
 
 * Demo  
 
-* docopt demo
-
 .link https://httpbin.org/ Based on httpbin
-.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/docopt/cli.py code
-.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/docopt/test.sh test
-.link https://github.com/docopt/docopt/issues/133 from __future__ gotcha
-
-* docopt features
-
-.link http://docopt.org/ docopt site
-.link https://github.com/docopt/docopt/tree/master/examples gitrepo examples
 
 * argparse demo
 
-* argparse features
+.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/argparse-cli/cli.py code
+.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/test.sh test
+
+* argparse highlights
+
+- Validation during parsing
+- Repetition of data
+.link https://stackoverflow.com/questions/17909294/python-argparse-mutual-exclusive-group mutually-exclusive args?
+
+* docopt demo
+
+.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/docopt-cli/cli.py code
+.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/test.sh test
+.link https://github.com/docopt/docopt/issues/133 from future gotcha
+
+* docopt highlights
+
+- Validation post parsing
+- Tighter as compared to argparse
+.link https://pypi.python.org/pypi/schema Resuable validation using schema
+.link https://github.com/docopt/docopt/tree/master/examples gitrepo examples
 
 * click demo
 
-* click features
+* click highlights
+
+- Neither argparse nor docopt force you to rethink code reorganization - click does
+- Context passing - no globals - --verbose
+- Colored error messages by default
+.link https://github.com/pallets/click/tree/master/examples gitrepo examples
+
+* When to use what
+
+- Your call
+- What I do:
+  docopt   - rapid prototyping / monitoring scripts / thinking aloud about how the cli should look 
+  click    - bigger / long-term / wider audience projects
+  argparse - legacy systems / don't-install-anything-on-me systems

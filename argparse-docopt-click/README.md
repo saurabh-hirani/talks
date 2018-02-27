@@ -7,6 +7,16 @@ This talk compares building the command line interface for a [sampletodo](https:
 - Powered by the [go present](https://godoc.org/golang.org/x/tools/present) tool
 - [Here](https://github.com/saurabh-hirani/talks/tree/master/argparse-docopt-click/slides)
 
+### Local setup
+
+```
+# cd code
+# sudo pip install pipenv
+# sudo pipenv install -r requirements.txt
+# sudo pipenv shell
+```
+
 ### Code
 
 - [Here](https://github.com/saurabh-hirani/talks/tree/master/argparse-docopt-click/code)
+

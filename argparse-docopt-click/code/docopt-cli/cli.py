@@ -28,6 +28,8 @@ import json
 import common.utils as utils
 import uuid
 
+VERBOSE=False
+
 def call_url(args):
   ''' Call the target url '''
   print("SUCCESS\n")
@@ -59,6 +61,9 @@ def validate_input(args):
     print('ERROR: Failed to validate input')
     print(json.dumps(errors, indent=2))
     sys.exit(1)
+
+  global VERBOSE
+  VERBOSE = args['--verbose']
 
   return True
 
