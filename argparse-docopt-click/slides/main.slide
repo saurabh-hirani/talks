@@ -8,7 +8,6 @@ saurabh.hirani@gmail.com
 
 - Expectations from a cli
 - Steal from the masters
-- The todo app
 - argparse intro
 - docopt intro
 - click intro
@@ -63,7 +62,6 @@ saurabh.hirani@gmail.com
 .link http://docopt.org/ docopt
 - More of command line description language
 - Translates documentation into command line parser  
-- Uses
 - Extremely easy to learn
 - Available for different languages
 
