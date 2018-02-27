@@ -5,4 +5,8 @@ This talk compares building the command line interface for a [sampletodo](https:
 ### Slides
 
 - Powered by the [go present](https://godoc.org/golang.org/x/tools/present) tool
-- [Here]()
+- [Here](https://github.com/saurabh-hirani/talks/tree/master/argparse-docopt-click/slides)
+
+### Code
+
+- [Here](https://github.com/saurabh-hirani/talks/tree/master/argparse-docopt-click/code)
