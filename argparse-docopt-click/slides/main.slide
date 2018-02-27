@@ -8,12 +8,9 @@ saurabh.hirani@gmail.com
 
 - Expectations from a cli
 - Steal from the masters
-- argparse intro
-- docopt intro
-- click intro
-- Demo
-- Code review
-- References
+- Intros - argparse, docopt, click
+- Demos  - argparse, docopt, click
+- When to use what
  
 * Expectations from a cli - I:
 
