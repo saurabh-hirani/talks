@@ -95,6 +95,7 @@ saurabhhirani@bluejeansnet.com
 - Validation during parsing
 - Repetition of data
 .link https://stackoverflow.com/questions/17909294/python-argparse-mutual-exclusive-group mutually-exclusive args?
+.link https://pymotw.com/2/argparse/ good pymotw intro
 
 * docopt demo
 
@@ -120,6 +121,7 @@ saurabhhirani@bluejeansnet.com
 
 * When to use what
 
+- Each has its own place
 - Your call
 - What I do:
   docopt   - rapid prototyping / monitoring scripts / thinking aloud about how the cli should look 
