@@ -68,7 +68,7 @@ saurabh.hirani@gmail.com
 * click
 
 .link http://click.pocoo.org/5/ click
-- Decouples parsing from one single places
+- parsing and dispatching
 - Based on the ideas of
   Composability 
   Invocation context 
