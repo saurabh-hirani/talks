@@ -1,0 +1,88 @@
+argparse-docopt-click
+
+Saurabh Hirani
+@sphirani
+saurabhhirani@bluejeansnet.com
+
+* Agenda:
+
+- Expectations from a cli
+- Steal from the masters
+- The todo app
+- argparse intro
+- docopt intro
+- click intro
+- Demo
+- Code review
+- References
+ 
+* Expectations from a cli - I:
+
+- long and short options
+  -h / --help
+
+- Multiple arguments
+  --names a b c
+
+- Argument types
+  boolean
+  number
+  custom?
+
+- subcommands
+  git push 
+  git pull
+
+* Expectations from a cli - II:
+
+- input validation
+  callbacks
+
+- error handling
+  colored terminal output?
+
+- extensibility
+  command specific functions?
+  command specific files?
+
+* Steal from the masters
+
+- git
+- aws
+
+* The todo app
+
+- Simple todo app
+- REST API
+- Create, Read, Update, Delete
+
+* argparse intro
+
+.link https://docs.python.org/2.7/library/argparse.html argparse
+- Comes with stdlib
+
+* docopt 
+
+.link http://docopt.org/ docopt
+- More of command line description language
+- Translates documentation into command line parser  
+- Extremely easy to learn
+- Available for different languages
+
+* click
+
+.link http://click.pocoo.org/5/ click
+- Decouples parsing from one single places
+- Based on the ideas of
+  Composability 
+  Invocation context 
+
+* What is common in all 3?
+
+- Great documentation
+- Lots of community examples
+- See the references section for more details
+
+* Demo  
+
+.link 
