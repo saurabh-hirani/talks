@@ -14,28 +14,29 @@ if [[ $parser_type != 'argparse' ]] && [[ $parser_type != 'docopt' ]] && [[ $par
   exit 1
 fi
 
-cli="$parser_type/cli.py"
+cli="$parser_type-cli/cli.py"
 
 set -x
 
 python $cli 
 python $cli get 
-python $cli get ip
-python $cli get user-agent 
-python $cli get headers
-python $cli get html
-python $cli get ip --show-env
-python $cli get status 404
+python $cli -v get ip
+python $cli -v get user-agent 
+python $cli -v get headers
+python $cli -v get html
+python $cli -v get ip --show-env
+python $cli -v get status 404
+python $cli -v get status 22
 
-python $cli post payload
-python $cli post -u username -p password payload
-python $cli post -t token payload
-python $cli post payload
+python $cli -v post payload
+python $cli -v post -u username -p password payload
+python $cli -v post -t token payload
+python $cli -v post payload
 
-python $cli put -u username -p password payload
-python $cli put -t token payload
+python $cli -v put -u username -p password payload
+python $cli -v put -t token payload
 
-python $cli delete -u username -p password -t token payload
-python $cli delete -t token payload
+python $cli -v delete -u username -p password -t token payload
+python $cli -v delete -t token payload
 
 set +x
