@@ -20,3 +20,14 @@ This talk compares building the command line interface for a [sampletodo](https:
 
 - [Here](https://github.com/saurabh-hirani/talks/tree/master/argparse-docopt-click/code)
 
+### Run tests
+
+- Ensure that ```pipenv``` setup is done
+
+- Run test for each implementation:
+```
+# ./test.sh docopt 2>&1 | less
+# ./test.sh argparse 2>&1 | less
+# ./test.sh click 2>&1 | less
+```
+
