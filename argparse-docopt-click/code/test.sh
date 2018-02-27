@@ -16,27 +16,65 @@ fi
 
 cli="$parser_type-cli/cli.py"
 
+valid_user="user1"
+valid_password="password1"
+valid_uuid="78f15402-1bb7-11e8-9aba-a0999b0f9f4b"
+valid_payload="{\"a\": \"b\"}"
+valid_status_code=404
+
 set -x
 
+# error
 python $cli 
+
+# error
 python $cli get 
+
 python $cli -v get ip
 python $cli -v get user-agent 
 python $cli -v get headers
 python $cli -v get html
 python $cli -v get ip --show-env
-python $cli -v get status 404
+
+# error
 python $cli -v get status 22
 
-python $cli -v post payload
-python $cli -v post -u username -p password payload
-python $cli -v post -t token payload
-python $cli -v post payload
+python $cli -v get status $valid_status_code
 
-python $cli -v put -u username -p password payload
-python $cli -v put -t token payload
+# error
+python $cli -v post garbage_payload
 
-python $cli -v delete -u username -p password -t token payload
-python $cli -v delete -t token payload
+# error
+python $cli -v post -u garbage_username -p garbage_password garbage_payload
+
+python $cli -v post -u $valid_user -p $valid_password "$valid_payload"
+python $cli -v post -t $valid_uuid "$valid_payload"
+python $cli -v post "$valid_payload"
+
+# error
+python $cli -v post -t garbage_token garbage_payload
+
+python $cli -v post -t $valid_uuid "$valid_payload"
+
+# error
+python $cli -v put -u garbage_username -p garbage_password garbage_payload 
+
+python $cli -v put -u $valid_user -p $valid_password "$valid_payload"
+python $cli -v put -t $valid_uuid "$valid_payload"
+
+# error
+python $cli -v put "$valid_payload"
+
+# error
+python $cli -v delete
+
+# error
+python $cli -v delete -u garbage_username -p garbage_password -t token payload
+
+python $cli -v delete -u $valid_user -p $valid_password
+python $cli -v delete -t $valid_uuid 
+
+# error
+python $cli -v delete -t token
 
 set +x
