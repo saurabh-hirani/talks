@@ -4,6 +4,15 @@ Saurabh Hirani
 @sphirani
 saurabh.hirani@gmail.com
 
+* What this session is not:
+
+- 1 hello-world app in 3 tools decides which one is best
+
+* What this session is:
+
+- A focused comparision of 3 different cli parsing tools
+- No application logic discussion
+
 * Agenda:
 
 - Expectations from a cli
@@ -34,6 +43,8 @@ saurabh.hirani@gmail.com
 
 * Expectations from a cli - II:
 
+- Default values in env vars
+
 - input validation
   callbacks
 
@@ -48,8 +59,14 @@ saurabh.hirani@gmail.com
 
 - learning curve
 - subcommand support
-- ease of input validation
+- env var support
+- input validation integration
 - code organization
+
+* Testing
+
+.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/test.sh quick and dirty test.sh
+.link https://www.youtube.com/watch?v=ApTZib0L2X8 ideally I should've done something like this
 
 * argparse intro
 
@@ -92,6 +109,7 @@ saurabh.hirani@gmail.com
 
 * argparse highlights
 
+- Default values through env vars
 - Validation during parsing
 - Repetition of data
 .link https://stackoverflow.com/questions/17909294/python-argparse-mutual-exclusive-group mutually-exclusive args?
@@ -101,6 +119,7 @@ saurabh.hirani@gmail.com
 
 .link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/docopt-cli/cli.py code
 .link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/test.sh test
+.link https://github.com/Robpol86/docoptcfg env var support
 .link https://github.com/docopt/docopt/issues/133 from future gotcha
 
 * docopt highlights
@@ -117,6 +136,8 @@ saurabh.hirani@gmail.com
 - Neither argparse nor docopt force you to rethink code reorganization - click does
 - Context passing - no globals - --verbose
 - Colored error messages by default
+.link remember unicode during validation
+.link https://twitter.com/mitsuhiko/status/458291837485481985 An interesting name
 .link https://github.com/pallets/click/tree/master/examples gitrepo examples
 
 * When to use what

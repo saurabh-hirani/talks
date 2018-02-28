@@ -48,6 +48,10 @@ python $cli -v post garbage_payload
 python $cli -v post -u garbage_username -p garbage_password garbage_payload
 
 python $cli -v post -u $valid_user -p $valid_password "$valid_payload"
+
+CLI_USERNAME=$valid_user CLI_PASSWORD=$valid_password python $cli -v post -u envvar -p envvar "$valid_payload"
+CLI_USERNAME=$valid_user CLI_PASSWORD=$valid_password python $cli -v post "$valid_payload"
+
 python $cli -v post -t $valid_uuid "$valid_payload"
 python $cli -v post "$valid_payload"
 

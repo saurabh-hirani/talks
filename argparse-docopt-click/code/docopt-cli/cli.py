@@ -21,6 +21,7 @@ Options:
 '''
 
 from __future__ import print_function
+import os
 import sys
 from docopt import docopt
 from schema import SchemaError
@@ -65,6 +66,17 @@ def validate_input(args):
   global VERBOSE
   VERBOSE = args['--verbose']
 
+  # update env vars
+  if args['--username'] == 'envvar':
+    username = os.environ.get('CLI_USERNAME', None)
+    if username is None:
+      raise ValueError('ERROR: Failed to load username from env')
+    
+  if args['--password'] == 'envvar':
+    password = os.environ.get('CLI_PASSWORD', None)
+    if password is None:
+      raise ValueError('ERROR: Failed to load password from env')
+
   return True
 
 def load_args(args):
@@ -72,9 +84,14 @@ def load_args(args):
   parsed_docopt = docopt(__doc__, version='1.0')
   return parsed_docopt
 
-if __name__ == '__main__':
+def main(args):
+  ''' Main function '''
   print("----------------------------")
-  args = load_args(sys.argv[1:])
-  print("++++++++++++++++++++++++++++\n")
+  args = load_args(args)
   validate_input(args)
+  print("SUCCESS\n")
   call_url(args)
+  return 0
+
+if __name__ == '__main__':
+  sys.exit(main(sys.argv))

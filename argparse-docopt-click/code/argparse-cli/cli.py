@@ -2,9 +2,10 @@
 ''' Argparse example '''
 
 from __future__ import print_function
-import common.utils as utils
-import argparse
+import os
 import sys
+import argparse
+import common.utils as utils
 
 VERBOSE=False
 
@@ -12,7 +13,7 @@ def call_url(args):
   ''' Call the target url '''
   pass
 
-def load_args(args):
+def load_args(argv):
   ''' Load command line args '''
   parser = argparse.ArgumentParser()
   parser.add_argument('--verbose', '-v',  action='store_true', default=False,
@@ -25,42 +26,48 @@ def load_args(args):
                           help='type of get command',
                           choices=['ip', 'user-agent', 'headers', 'html', 'status'])
   get_parser.add_argument('--status-code', help='status data payload', default=404,
-                           type=utils.validate_status_code_arg)
+                           type=utils.argparse_validate_status_code_arg)
   get_parser.add_argument('--show-env', '-e', action='store_true', default=False,
                            help='show env vars')
 
   # post parser
   post_parser = subparsers.add_parser('post', help='post command')
   post_parser.add_argument('--username', '-u', action='store', required=False,
-                             help='username', type=utils.validate_username_arg)
+                           default=os.environ.get('CLI_USERNAME', None),
+                           help='username', type=utils.argparse_validate_username_arg)
   post_parser.add_argument('--password', '-p', required=False,
-                             help='password', type=utils.validate_password_arg)
+                           default=os.environ.get('CLI_PASSWORD', None),
+                           help='password', type=utils.argparse_validate_password_arg)
   post_parser.add_argument('--api-token', '-t', required=False, help='api-token', 
-                           type=utils.validate_uuid_arg)
+                           type=utils.argparse_validate_uuid_arg)
   post_parser.add_argument('json_data', help='json payload',
-                           type=utils.validate_json_arg)
+                           type=utils.argparse_validate_json_arg)
   
   # put parser
   put_parser = subparsers.add_parser('put', help='put command')
   put_parser.add_argument('--username', '-u', required=False,
-                             help='username', type=utils.validate_username_arg)
+                          default=os.environ.get('CLI_USERNAME', None),
+                          help='username', type=utils.argparse_validate_username_arg)
   put_parser.add_argument('--password', '-p', required=False,
-                             help='password', type=utils.validate_password_arg)
+                          default=os.environ.get('CLI_PASSWORD', None),
+                          help='password', type=utils.argparse_validate_password_arg)
   put_parser.add_argument('--api-token', '-t', required=False,
-                          help='api-token', type=utils.validate_uuid_arg)
+                          help='api-token', type=utils.argparse_validate_uuid_arg)
   put_parser.add_argument('json_data', help='json payload',
-                          type=utils.validate_json_arg)
+                          type=utils.argparse_validate_json_arg)
 
   # delete parser
   delete_parser = subparsers.add_parser('delete', help='delete command')
   delete_parser.add_argument('--username', '-u', required=False,
-                             help='username', type=utils.validate_username_arg)
+                             default=os.environ.get('CLI_USERNAME', None),
+                             help='username', type=utils.argparse_validate_username_arg)
   delete_parser.add_argument('--password', '-p', required=False,
-                             help='password', type=utils.validate_password_arg)
+                             default=os.environ.get('CLI_PASSWORD', None),
+                             help='password', type=utils.argparse_validate_password_arg)
   delete_parser.add_argument('--api-token', '-t', required=False,
-                             help='api-token', type=utils.validate_uuid_arg)
+                             help='api-token', type=utils.argparse_validate_uuid_arg)
 
-  args = vars(parser.parse_args())
+  args = vars(parser.parse_args(argv[1:]))
 
   global VERBOSE
   VERBOSE = args['verbose']
@@ -87,8 +94,12 @@ def load_args(args):
 
   return args
 
-if __name__ == '__main__':
+def main(args):
+  ''' Main function '''
   print("----------------------------")
-  args = load_args(sys.argv[1:])
-  print("++++++++++++++++++++++++++++\n")
+  args = load_args(args)
+  print("SUCCESS\n")
   call_url(args)
+
+if __name__ == '__main__':
+  sys.exit(main(sys.argv))
