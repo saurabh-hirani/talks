@@ -14,7 +14,7 @@ import click
 def cli(ctx, **kwargs):
   ''' top level cli '''
   this_function_name = sys._getframe().f_code.co_name
-  click.echo('function %s: verbosity=%s' % (this_function_name, kwargs['verbose']))
+  print('function %s: verbosity=%s' % (this_function_name, kwargs['verbose']))
   ctx.obj['log_level'] = 'info'
 
 @cli.command()
@@ -27,7 +27,7 @@ def get(ctx, **kwargs):
   ''' Get method call '''
   this_function_name = sys._getframe().f_code.co_name
   print('function %s: ctx.obj.log_level=%s' % (this_function_name, ctx.obj['log_level']))
-  print("SUCCESS\n")
+  click.echo(click.style('SUCCESS\n', fg='green'))
 
 @cli.command()
 @click.argument('json_data', callback=utils.click_validate_json_arg)
@@ -44,7 +44,7 @@ def post(ctx, **kwargs):
   ''' Post method call '''
   this_function_name = sys._getframe().f_code.co_name
   print('function %s: ctx.obj.log_level=%s' % (this_function_name, ctx.obj['log_level']))
-  print("SUCCESS\n")
+  click.echo(click.style('SUCCESS\n', fg='green'))
 
 @cli.command()
 @click.argument('json_data', callback=utils.click_validate_json_arg)
@@ -61,7 +61,7 @@ def put(ctx, **kwargs):
   ''' Put method call '''
   this_function_name = sys._getframe().f_code.co_name
   print('function %s: ctx.obj.log_level=%s' % (this_function_name, ctx.obj['log_level']))
-  print("SUCCESS\n")
+  click.echo(click.style('SUCCESS\n', fg='green'))
 
 @cli.command()
 @click.option('--username', '-u', help='username', 
@@ -77,7 +77,7 @@ def delete(ctx, **kwargs):
   ''' Delete method call '''
   this_function_name = sys._getframe().f_code.co_name
   print('function %s: ctx.obj.log_level=%s' % (this_function_name, ctx.obj['log_level']))
-  print("SUCCESS\n")
+  click.echo(click.style('SUCCESS\n', fg='green'))
 
 @cli.group()
 @click.option('--username', '-u', help='username', 
@@ -103,7 +103,7 @@ def post(ctx, **kwargs):
   ''' requests report '''
   this_function_name = sys._getframe().f_code.co_name
   print('function %s: ctx.obj.username=%s' % (this_function_name, ctx.obj['username']))
-  print("SUCCESS\n")
+  click.echo(click.style('SUCCESS\n', fg='green'))
 
 @modify.command()
 @click.argument('json_data', callback=utils.click_validate_json_arg)
@@ -112,7 +112,7 @@ def put(ctx, **kwargs):
   ''' requests report '''
   this_function_name = sys._getframe().f_code.co_name
   print('function %s: ctx.obj.username=%s' % (this_function_name, ctx.obj['username']))
-  print("SUCCESS\n")
+  click.echo(click.style('SUCCESS\n', fg='green'))
 
 @modify.command()
 @click.pass_context
@@ -120,7 +120,7 @@ def delete(ctx, **kwargs):
   ''' requests report '''
   this_function_name = sys._getframe().f_code.co_name
   print('function %s: ctx.obj.username=%s' % (this_function_name, ctx.obj['username']))
-  print("SUCCESS\n")
+  click.echo(click.style('SUCCESS\n', fg='green'))
 
 if __name__ == "__main__":
   print("============================")

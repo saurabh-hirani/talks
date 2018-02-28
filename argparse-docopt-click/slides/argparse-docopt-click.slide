@@ -119,25 +119,28 @@ saurabh.hirani@gmail.com
 
 .link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/docopt-cli/cli.py code
 .link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/test.sh test
-.link https://github.com/Robpol86/docoptcfg env var support
-.link https://github.com/docopt/docopt/issues/133 from future gotcha
 
 * docopt highlights
 
 - Validation post parsing
 - Tighter as compared to argparse
+.link https://github.com/Robpol86/docoptcfg env var support
+.link https://github.com/docopt/docopt/issues/133 from future gotcha
 .link https://pypi.python.org/pypi/schema Resuable validation using schema
 .link https://github.com/docopt/docopt/tree/master/examples gitrepo examples
 
 * click demo
 
+.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/click-cli/cli.py code
+.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/test.sh test
+
 * click highlights
 
-- Neither argparse nor docopt force you to rethink code reorganization - click does
-- Context passing - no globals - --verbose
-- Colored error messages by default
-.link remember unicode during validation
-.link https://twitter.com/mitsuhiko/status/458291837485481985 An interesting name
+- forces you to rethink code reorganization
+- Context passing - --verbose
+- Cleaner command level option setting - --username, --password
+- Colored output
+.link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/common/utils.py#L25  remember unicode during validation
 .link https://github.com/pallets/click/tree/master/examples gitrepo examples
 
 * When to use what

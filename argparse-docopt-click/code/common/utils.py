@@ -22,6 +22,7 @@ def argparse_validate_username_arg(username):
 def click_validate_username_arg(ctx, param, value):
   ''' validate username input '''
   try:
+    #get_username_schema().validate(str(value))
     get_username_schema().validate(str(value))
   except SchemaError as ex:
     raise click.UsageError(str(ex))
