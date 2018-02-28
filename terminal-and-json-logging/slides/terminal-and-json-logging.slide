@@ -10,6 +10,11 @@ saurabh.hirani@gmail.com
 - Run locally
 - Run via docker
 
+* The code
+
+.link https://github.com/saurabh-hirani/sampletodo/blob/master/sampletodo/common/utils.py sampletodo/common/utils.py
+.link https://github.com/saurabh-hirani/sampletodo/blob/master/sampletodo/__init__.py#L45 sampletodo/__init__.py
+
 * Borrowed from
 
 .link http://www.structlog.org/en/stable/ structlog
