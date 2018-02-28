@@ -1,0 +1,17 @@
+terminal-and-json-logging
+
+Saurabh Hirani
+@sphirani
+saurabh.hirani@gmail.com
+
+* Demo
+
+.link https://github.com/saurabh-hirani/sampletodo sampletodo
+- Run locally
+- Run via docker
+
+* Borrowed from
+
+.link http://www.structlog.org/en/stable/ structlog
+.link http://blog.mcpolemic.com/2016/01/18/adding-request-ids-to-flask.html adding request ids
+.link https://blog.sneawo.com/blog/2017/07/28/json-logging-in-python/ python json logging
