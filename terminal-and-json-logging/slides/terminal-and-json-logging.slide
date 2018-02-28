@@ -10,6 +10,13 @@ saurabh.hirani@gmail.com
 - Run locally
 - Run via docker
 
+* Similarity to Yi Sheng's talk:
+
+- logging for debugging
+- massive multiplayer game?
+- machine/container -> log aggregator -> splunk/elasticsearch
+- structlog demo
+
 * The code
 
 .link https://github.com/saurabh-hirani/sampletodo/blob/master/sampletodo/common/utils.py sampletodo/common/utils.py
