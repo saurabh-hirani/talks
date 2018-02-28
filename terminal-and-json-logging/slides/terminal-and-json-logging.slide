@@ -15,7 +15,7 @@ saurabh.hirani@gmail.com
 - logging for debugging
 - massive multiplayer game?
 - machine/container -> log aggregator -> splunk/elasticsearch
-- structlog demo
+.link https://github.com/saurabh-hirani/talks/blob/master/terminal-and-json-logging/code/structlog-demo.py structlog demo
 
 * The code
 
