@@ -141,6 +141,7 @@ saurabh.hirani@gmail.com
 - Cleaner command level option setting - --username, --password
 - Colored output
 .link https://github.com/saurabh-hirani/talks/blob/master/argparse-docopt-click/code/common/utils.py#L25  remember unicode during validation
+.link https://github.com/pallets/click/issues/257 mutually exclusive args?
 .link https://github.com/pallets/click/tree/master/examples gitrepo examples
 
 * When to use what
