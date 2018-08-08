@@ -1,0 +1,409 @@
+
+\documentclass[9pt]{beamer}
+
+\usepackage[latin1]{inputenc}
+\usepackage{colortbl}
+\usepackage[english]{babel}
+
+\newcommand{\myblue} [1] {{\color{blue}#1}}
+
+% beamer template
+\beamertemplatetransparentcovereddynamic
+\usetheme{default}
+\date{}
+
+\title[Terraform workshop]{Terraform workshop}
+\author[Saurabh Hirani]{Saurabh Hirani}
+\institute[Autodesk]
+{
+\medskip
+\myblue{\href{mailto:saurabh.hirani@gmail.com}{\texttt{saurabh.hirani@gmail.com}}} \\
+}
+
+\begin{document}
+\setbeamercovered{invisible}
+
+\frame{\titlepage
+}
+
+\part<presentation>{Main Talk}
+
+\section[slides]{slides}
+
+\begin{frame}[fragile]
+  \frametitle{What this session is:}
+
+  \begin{itemize}[<+->]
+    \item Why Terraform?
+    \item Iterative hands on
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{What this session is not:}
+
+  \begin{itemize}
+    \item AWS training
+    \item Terraform reference
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{I can learn it on my own}
+
+  \begin{itemize}
+    \item \myblue{\href{https://www.terraformupandrunning.com/}{\texttt{Read this book}}}
+    \item \myblue{\href{https://blog.gruntwork.io/an-introduction-to-terraform-f17df9c6d180}{\texttt{Read this blog}}}
+    \item \myblue{\href{https://terraform.io/}{\texttt{Refer this site}}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Why attend this session?}
+
+  \begin{itemize}[<+->]
+    \item No one goes from a messed up working setup to a clean working setup
+    \item We will do that
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Why Terraform?}
+
+  \begin{itemize}
+    \item Short answer - it is useful, battle tested and has a strong community
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Why manual infra creation is a bad idea?}
+
+  \begin{itemize}[<+->]
+    \item Manual $\Rightarrow$ Error prone
+    \item Parity loss between dev, stage, prod
+    \item Boring!
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{There has to be a better way}
+
+  \begin{itemize}[<+->]
+    \item aws cli shell scripts?
+    \item For python users \myblue{\href{https://github.com/boto/boto}{\texttt{boto}}}
+    \item For ruby users \myblue{\href{https://github.com/fog/fog}{\texttt{fog}}}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Advantages of homegrown scripts}
+
+  \begin{itemize}[<+->]
+    \item Customized for your product
+    \item You wrote it - you know all about it
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Disadvantages of homegrown scripts}
+
+  \begin{itemize}[<+->]
+    \item Customized for your product
+    \item You wrote it - \textbf{only} you know all about it
+    \item Need a central box to manage
+    \item State information?
+    \item Audit trail?
+    \item Is this what you are supposed to do?
+    \item New product == new infra scripts?
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{We need a tool that...}
+
+  \begin{itemize}[<+->]
+    \item Helps automate infra creation
+    \item Can be used by multiple users
+    \item Promotes reusability
+    \item Is not our headache to maintain
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Enter Terraform}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Features}
+
+  \begin{itemize}[<+->]
+    \item Infrastructure as code
+    \item Ease of learning curve + active community
+    \item Support for multiple cloud vendors
+    \item State management
+    \item Modules!
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Comparison with Cloudformation}
+
+  \begin{itemize}[<+->]
+    \item Biggest advantage of TF over CF - TF is cloud vendor agnostic
+    \item CF verbosity $>$ TF
+    \item CF community $<$ TF
+    \item CF learning curve =\~{} TF
+    \item Other alternatives:
+      \begin{itemize}[<+->]
+        \item \myblue{\href{http://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules.html}{\texttt{Ansible cloud modules}}}
+        \item \myblue{\href{https://www.sparkleformation.io/}{\texttt{Sparkleformation}}}
+        \item Many others
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Choose your editor}
+  \begin{itemize}
+    \item \myblue{\href{https://atom.io/packages/language-terraform}{\texttt{Atom syntax support}}}
+    \item \myblue{\href{https://atom.io/packages/linter-terraform-syntax}{\texttt{Atom linting support}}}
+    \item \myblue{\href{https://github.com/hashivim/vim-terraform}{\texttt{Vim syntax support}}}
+    \item \myblue{\href{https://github.com/juliosueiras/vim-terraform-completion}{\texttt{Vim syntax support}}}
+    \item Choose your weapon - syntax + basic linting (demo)
+    \item Use "terraform validate" otherwise
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Setup}
+  \begin{itemize}
+    \item 1 VPC
+    \item 1 public subnet, 1 private subnet
+    \item 1 ELB with public subnet + public security group
+    \item 2 instances behind ELB in private subnet + private security group
+    \item Hard to actually do the entire setup - simulate via s3
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Demo}
+  \begin{itemize}
+    \item \myblue{\href{https://github.com/saurabh-hirani/terraform-workshop}{\texttt{Clone terraform-workshop repo}}}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{assignment-1}
+
+  \begin{itemize}[<+->]
+    \item One file to rule them all - main.tf
+    \item Good: works
+    \item Bad: Hard to maintain
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{assignment-2}
+
+  \begin{itemize}[<+->]
+    \item Split main.tf
+    \item Good: Easier to read
+    \item Bad: Does not handle different environments
+    \item Worth mentioning: \myblue{\href{https://www.terraform.io/docs/state/workspaces.html}{\texttt{terraform workspaces}}}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{assignment-3}
+
+  \begin{itemize}[<+->]
+    \item Split same code across multiple environments
+    \item Good: works
+    \item Bad: Repetition of code - only env different
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{assignment-4}
+
+  \begin{itemize}[<+->]
+    \item tfvars to abstract out common code
+    \item Good: works
+    \item Bad: same as previous case but now both dev stage exactly the same
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{assignment-5}
+
+  \begin{itemize}[<+->]
+    \item local module
+    \item Good: works
+    \item Bad: Infra and module tightly coupled
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{assignment-6}
+
+  \begin{itemize}[<+->]
+    \item remote module
+    \item Good: decoupling, versioning
+    \item Bad: Long terraform commands to document
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Modules}
+
+  \begin{itemize}[<+->]
+    \item Rakefile for release versioning
+    \item terraform-docs for auto generating documentation
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{assignment-7}
+
+  \begin{itemize}[<+->]
+    \item add Makefile to the mix
+    \item Good: make X helps
+    \item Bad: create/destroy everything together - no staged approach
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{assignment-8}
+
+  \begin{itemize}[<+->]
+    \item Split the creation keeping in mind the infra and/or the users
+    \item Remote state
+    \item Good: cleaner, modular than previous approach
+    \item Bad: Don't know the dependencies by looking at the structure
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Splitting infra creation advantages}
+
+  \begin{itemize}[<+->]
+    \item Allows closer inspection
+    \item Plan with local source, apply in dev with git source
+    \item \myblue{\href{https://github.com/saurabh-hirani/terraform-workshop/blob/master/assignment-8/dev/base/main.tf\#L2}{\texttt{Example}}}
+    \item Remote state allows team to collaborate
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Splitting infra creation advantages}
+
+  \begin{itemize}[<+->]
+    \item Allows closer inspection
+    \item Plan locally, apply in dev via versioning and take it from there
+    \item Remote state allows team to collaborate
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Naming: to delegate or not to delegate?}
+  \begin{itemize}[<+->]
+    \item Approach 1: pass primitives, module constructs the name
+    \item \myblue{\href{https://github.com/saurabh-hirani/terraform-workshop-module/blob/master/vpc/main.tf\#L1\#L11}{\texttt{Example}}}
+      \begin{itemize}[<+->]
+        \item More Uniform
+        \item Less flexible
+        \item Preferred for inner source (think moniker)
+      \end{itemize}
+    \item Approach 2: construct names locally and pass to the module
+    \item \myblue{\href{https://github.com/saurabh-hirani/terraform-workshop-module/blob/master/vpc/main.tf\#L13\#L23}{\texttt{Example}}}
+      \begin{itemize}[<+->]
+        \item Less Uniform
+        \item More flexible
+        \item Preferred for open source
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{One shot v/s incremental}
+  \begin{itemize}[<+->]
+    \item Avoid extremeties: whole universe v/s each component
+    \item Do simple splits: vpc, base, app
+    \item One shot:
+      \begin{itemize}
+        \item Less repetition
+        \item Magical?
+        \item \myblue{\href{https://www.terraform.io/docs/commands/destroy.html}{\texttt{Manually do targeted destroys}}}
+      \end{itemize}
+    \item Incremental:
+      \begin{itemize}
+        \item More repetition
+        \item Remember dependency order
+        \item One step at a time
+      \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{assignment-9}
+
+  \begin{itemize}[<+->]
+    \item Use simple numbering to define steps
+    \item Hack
+    \item Needs a better way to manage folder level dependencies
+  \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{More material}
+
+  \begin{itemize}
+    \item \myblue{\href{https://blog.gruntwork.io/an-introduction-to-terraform-f17df9c6d180}{\texttt{Yevgeniy's awesome terraform tutorial}}}
+    \item \myblue{\href{https://registry.terraform.io/}{\texttt{Terraform module registry}}}
+    \item \myblue{\href{https://www.terraform.io/docs/configuration/interpolation.html}{\texttt{terraform interpolation syntax}}}
+    \item \myblue{\href{https://github.com/kamatama41/tfenv}{\texttt{tfenv}}}
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Q \& A}
+\end{frame}
+
+\end{document}
