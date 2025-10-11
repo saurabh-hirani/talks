@@ -1,32 +1,32 @@
-# install minikube
+### install minikube
 
 ```
 brew install minikube
 
 ```
 
-# setup
+### setup
 
 ```
 ./setup.sh
 
 ```
 
-# install and check kubectl
+### install and check kubectl
 
 ```
 brew install kubectl
 
 ```
 
-# deploy setup
+### deploy setup
 
 ```
 ./deploy.sh
 
 ```
 
-# un-deploy setup
+### un-deploy setup
 
 ```
 ./undeploy.sh
