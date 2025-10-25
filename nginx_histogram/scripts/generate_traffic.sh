@@ -3,8 +3,8 @@ set -euo pipefail
 
 # Check if arguments are provided
 if [ $# -ne 2 ]; then
-  echo >&@ "Usage: $0 <min_size> <max_size>"
-  echo >&@ "Example: $0 100 2048"
+  echo >&2 "Usage: $0 <min_size> <max_size>"
+  echo >&2 "Example: $0 100 2048"
   exit 1
 fi
 
@@ -23,9 +23,11 @@ echo >&2 "Press Ctrl+C to stop"
 
 while true; do
   # Generate random size between min and max
+  # TODO - demo shuf
   SIZE=$(shuf -i "${MIN_SIZE}"-"${MAX_SIZE}" -n 1)
 
   # Generate random data of that size
+  # TODO - demo head -c
   DATA=$(head -c "$SIZE" /dev/urandom | base64 | tr -d '\n')
 
   # Pick random endpoint

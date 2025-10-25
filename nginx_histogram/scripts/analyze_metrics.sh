@@ -38,10 +38,11 @@ echo >&2 "Average content length: $AVG bytes"
 sort -n /tmp/sizes.txt >/tmp/sorted_sizes.txt
 
 # P50
+# TODO - demo percentile calculation
 target_percentile=50
 target_line=$(echo "$target_percentile * $TOTAL_LINES / 100" | bc)
 P50=$(sed -n "${target_line}p" /tmp/sorted_sizes.txt)
-echo >&@ "P50 content length: $P50 bytes"
+echo >&2 "P50 content length: $P50 bytes"
 
 # P90
 target_percentile=90

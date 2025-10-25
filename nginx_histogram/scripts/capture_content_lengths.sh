@@ -8,6 +8,7 @@ echo >&2 "Output file: $OUTPUT_FILE"
 echo >&2 "Press Ctrl+C to stop"
 
 # Capture HTTP traffic and extract Content-Length headers
+# TODO - demo tcpdump
 tcpdump -A -vvv -nli any '(port 80) and (length > 74)' -s 0 -w - 2>/dev/null |
   strings |
   grep -A10 HTTP |
