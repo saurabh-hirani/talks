@@ -12,16 +12,19 @@
 
 - Proof
   - What would you call an upcoming area near aiport?
-    - Neo-viman-nagar
+    - Neovim-annagar
+
 ---
+
 ### What's `init` for you?
 
-- A personal take on the AI ecosystem for neovim
+- Peek under the hood of how agents and editors communicate
 
-- neovim > your editor ❌
+- neovim > your_editor ❌
 
 - You do you ✅
 ---
+
 ### Why should you care if you're happy with your editor?
 
 - Steal like an artist - good ideas cross editor boundaries
@@ -32,6 +35,7 @@
 
   - Did you imagine agentic UX would be better on CLI than editor chat windows?
 ---
+
 ### vi -> vim -> neovim
 
 - vi (1976) - Bill Joy, visual mode for ex editor
@@ -42,6 +46,7 @@
 - neovim (2014) - fork of vim by Thiago de Arruda
   - Lua as first-class config/plugin language
 ---
+
 ### Where was I ?
 
 - Pre-AI era
@@ -57,13 +62,15 @@
   - (Happy!) neovim user
 
 ---
+
 ### The moment of truth
 
-- If the agent has come to the terminal, so should my editor!
 - See - jumping from editor to terminal
   - :!open images/vscode-to-terminal-jump.png
+- If the agent has come to the terminal, so should my editor!
 
 ---
+
 ### Agents covered
 
 - Claude code
@@ -98,6 +105,7 @@
   - ,ad - deny diff
 
 ### Opencode
+
 - [opencode.nvim](https://github.com/nickjvandyke/opencode.nvim)
 
 - See - nvim to Opencode flow
@@ -137,7 +145,79 @@
 - Standardizes communication between code editors/IDEs and coding agents
 - See - Rejected ACP
   - :!open images/rejected-acp.png
+- See - Accepted ACP
+  - :!open images/agentic-nvim-interaction.png
 - ACP to agents is what Language Server Protocol is for editors.
+- Native text window
+
+- Keys
+  - ,kt - Toggle agentic chat
+  - ,ks - Send context
+  - ,s  - switch ACP providers mid way (kiro to opencode)
+  - ,m  - change models
+
+### ACP limitations
+
+- Not all agents implement the full spec
+- Kiro implements ACP but many slash commands are missing
+- "Write once, works with any agent" isn't fully there yet
+
+### Best of both the worlds
+
+- Editor to any agent communication (like agentic.nvim)
+- Full control over any agent (like claudecode.nvim)
+
+### prompt-picker to the rescue
+
+- [prompt-picker](https://github.com/saurabh-hirani/prompt-picker.nvim)
+
+- See - Attention and tmux is all you need
+  - :!open images/prompt-picker-interaction.png
+
+- Flow
+
+  1. User: Selects text or places cursor in Neovim
+  2. Neovim: Opens prompt picker with predefined + custom prompts
+  3. prompt-picker: Renders template with context (file, selection, diagnostics)
+  4. prompt-picker: Sends rendered prompt to AI agent in tmux pane via tmux send-keys
+
+- Advantages
+  - No protocol, no server - just text over tmux
+  - Decoupled: I neither know or care which agent is in the tmux pane
+    - Works with any CLI agent
+    - Swap agents without changing a single line of config
+  - Customize prompts
+
+- Keys
+  - ,pa - adhoc prompt
+  - ,pp - your prompts to render
+  - ,pR - reload config
+
+### Race your agents!
+
+### How to ask why
+
+- [code-explainer](https://github.com/saurabh-hirani/code-explainer.nvim)
+- See - diffs powered by your agent
+  - :!open images/code-explainer-interaction.png
+
+- Keys
+  - ,qd - open diff window
+  - ,qt - open current file
+
+### Conclusion
+
+- Know how you talk to your agents
+- Hold your agents accountable for what and why
+- YOLO -> YOLO SOLR
+
+### Questions?
+
+- Saurabh Hirani
+- Setup - https://github.com/saurabh-hirani/talks/tree/master/cpu_promql
+- https://www.linkedin.com/in/shirani/
+- https://one2n.io/blog
+- https://www.linkedin.com/company/one2nc/
 
 ### References
 
@@ -157,17 +237,3 @@
   - LSP made it so one language server works with any editor.
   - Editor implements an LSP client, and the language tool implements an LSP server.
   - They talk to each other over a standard protocol (JSON-RPC).
-
-
-- ACP (Agent Communication Protocol) aims to do the same for AI agents — standardize how agents talk to
-each other and to tools, so any agent can work with any tool/service without custom integrations.
-- LSP (Language Server Protocol) standardized how editors talk to language tools — before LSP, every
-editor had its own way of getting autocomplete, go-to-definition, diagnostics, etc. LSP made it so one
-language server works with any editor.
-
-- ACP (Agent Communication Protocol) aims to do the same for AI agents — standardize how agents talk to
-each other and to tools, so any agent can work with any tool/service without custom integrations.
-
-- LSP (Language Server Protocol) standardized how editors talk to language tools — before LSP, every
-editor had its own way of getting autocomplete, go-to-definition, diagnostics, etc. LSP made it so one
-language server works with any editor.
