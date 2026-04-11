@@ -56,6 +56,7 @@
   - FOMO of - "My neovim doesn't have a chat window"
   - See - agent chat window
     - :!open images/vscode-chat-window.png
+    - ![vscode-chat-window](images/vscode-chat-window.png)
   - Moves to vscode
 
 - Today
@@ -67,6 +68,7 @@
 
 - See - jumping from editor to terminal
   - :!open images/vscode-to-terminal-jump.png
+  - ![vscode-to-terminal-jump](images/vscode-to-terminal-jump.png)
 - If the agent has come to the terminal, so should my editor!
 
 ---
@@ -86,6 +88,7 @@
 
 - See - nvim to Claude code flow
   - :!open images/claudecode-nvim-interaction.png
+  - ![claudecode-nvim-interaction](images/claudecode-nvim-interaction.png)
 
 - Flow
   1. Neovim: Starts a WebSocket server on a random localhost port
@@ -110,6 +113,7 @@
 
 - See - nvim to Opencode flow
   - :!open images/opencode-nvim-interaction.png
+  - ![opencode-nvim-interaction](images/opencode-nvim-interaction.png)
 
 - Flow
   1. Opencode: Starts an HTTP + SSE server on a localhost port
@@ -145,8 +149,10 @@
 - Standardizes communication between code editors/IDEs and coding agents
 - See - Rejected ACP
   - :!open images/rejected-acp.png
+  - ![rejected-acp](images/rejected-acp.png)
 - See - Accepted ACP
   - :!open images/agentic-nvim-interaction.png
+  - ![agentic-nvim-interaction](images/agentic-nvim-interaction.png)
 - ACP to agents is what Language Server Protocol is for editors.
 - Native text window
 
@@ -173,6 +179,7 @@
 
 - See - Attention and tmux is all you need
   - :!open images/prompt-picker-interaction.png
+  - ![prompt-picker-interaction](images/prompt-picker-interaction.png)
 
 - Flow
 
@@ -201,6 +208,7 @@
 
 - See - diffs powered by your agent
   - :!open images/code-explainer-interaction.png
+  - ![code-explainer-interaction](images/code-explainer-interaction.png)
 
 - Keys
   - ,qd - open diff window
@@ -216,10 +224,16 @@
 ### Questions?
 
 - Saurabh Hirani
-- Setup - https://github.com/saurabh-hirani/talks/tree/master/cpu_promql
 - https://www.linkedin.com/in/shirani/
-- https://one2n.io/blog
-- https://www.linkedin.com/company/one2nc/
+
+- Talk links
+  - https://github.com/saurabh-hirani/talks/blob/master/nvim-ai-setup/notes.md
+  - https://github.com/saurabh-hirani/prompt-picker.nvim
+  - https://github.com/saurabh-hirani/code-explainer.nvim
+
+- One2N Links
+  - https://one2n.io/blog
+  - https://www.linkedin.com/company/one2nc/
 
 ### References
 
