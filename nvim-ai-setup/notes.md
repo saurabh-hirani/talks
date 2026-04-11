@@ -198,6 +198,7 @@
 ### How to ask why
 
 - [code-explainer](https://github.com/saurabh-hirani/code-explainer.nvim)
+
 - See - diffs powered by your agent
   - :!open images/code-explainer-interaction.png
 
@@ -207,9 +208,10 @@
 
 ### Conclusion
 
-- Know how you talk to your agents
-- Hold your agents accountable for what and why
+- You stop learning when you stop peeking under the hood
+
 - YOLO -> YOLO SOLR
+  - You Only Live Once. So Live Responsibly.
 
 ### Questions?
 
