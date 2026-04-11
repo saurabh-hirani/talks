@@ -47,10 +47,10 @@
   - Lua as first-class config/plugin language
 ---
 
-### Where was I ?
+### Where was I?
 
 - Pre-AI era
-  - (Happy?) neovim user
+  - Neovim user
 
 - AI era begins..
   - FOMO of - "My neovim doesn't have a chat window"
@@ -59,7 +59,7 @@
   - Moves to vscode
 
 - Today
-  - (Happy!) neovim user
+  - Neovim user
 
 ---
 
