@@ -54,7 +54,7 @@
 
 - AI era begins..
   - FOMO of - "My neovim doesn't have a chat window"
-  - See - agent chat window
+  - View agent chat window
     - :!open images/vscode-chat-window.png
     - ![vscode-chat-window](images/vscode-chat-window.png)
   - Moves to vscode
@@ -66,7 +66,7 @@
 
 ### The moment of truth
 
-- See - jumping from editor to terminal
+- View jumping from editor to terminal
   - :!open images/vscode-to-terminal-jump.png
   - ![vscode-to-terminal-jump](images/vscode-to-terminal-jump.png)
 - If the agent has come to the terminal, so should my editor!
@@ -86,7 +86,7 @@
 
 - [claudecode.nvim](https://github.com/coder/claudecode.nvim)
 
-- See - nvim to Claude code flow
+- View nvim to Claude code flow
   - :!open images/claudecode-nvim-interaction.png
   - ![claudecode-nvim-interaction](images/claudecode-nvim-interaction.png)
 
@@ -111,7 +111,7 @@
 
 - [opencode.nvim](https://github.com/nickjvandyke/opencode.nvim)
 
-- See - nvim to Opencode flow
+- View nvim to Opencode flow
   - :!open images/opencode-nvim-interaction.png
   - ![opencode-nvim-interaction](images/opencode-nvim-interaction.png)
 
@@ -147,10 +147,10 @@
 
 - ACP - Agent Client Protocol - to the rescue
 - Standardizes communication between code editors/IDEs and coding agents
-- See - Rejected ACP
+- View rejected ACP
   - :!open images/rejected-acp.png
   - ![rejected-acp](images/rejected-acp.png)
-- See - Accepted ACP
+- View accepted ACP
   - :!open images/agentic-nvim-interaction.png
   - ![agentic-nvim-interaction](images/agentic-nvim-interaction.png)
 - ACP to agents is what Language Server Protocol is for editors.
@@ -177,7 +177,7 @@
 
 - [prompt-picker](https://github.com/saurabh-hirani/prompt-picker.nvim)
 
-- See - Attention and tmux is all you need
+- View attention and tmux is all you need
   - :!open images/prompt-picker-interaction.png
   - ![prompt-picker-interaction](images/prompt-picker-interaction.png)
 
@@ -206,7 +206,7 @@
 
 - [code-explainer](https://github.com/saurabh-hirani/code-explainer.nvim)
 
-- See - diffs powered by your agent
+- View diffs powered by your agent
   - :!open images/code-explainer-interaction.png
   - ![code-explainer-interaction](images/code-explainer-interaction.png)
 
