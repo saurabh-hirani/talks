@@ -185,6 +185,7 @@
 
   - Effort: Infrastructure change (add gateway), no app code changes
   - Reward: Provider-level visibility, cost attribution, retry detection
+  - Security: apps use gateway virtual keys, not raw provider API keys — fewer credentials to leak
   - Tradeoff: one more component that can fail (gateway itself becomes a dependency)
   - Worth it when: multi-provider, cost-sensitive, need provider SLA tracking
   - Not everyone needs this. Evaluate against your failure modes.
@@ -222,7 +223,3 @@
   - Fix: explicit bucket boundaries [0, 0.1, 0.2, ..., 1.0]
   - Lesson: tools give you defaults. Defaults assume your use case. Verify.
 
-### Other notes
-
-  - What it means: OpenTelemetry has GenAI semantic conventions (https://opentelemetry.io/docs/specs/semconv/gen-ai/) that define standard attribute names like gen_ai.system, gen_ai.request.model, gen_ai.usage.input_tokens. But they're marked "Experimental" — the attribute names, metric names, and what's required vs optional can still change between releases. Libraries like OpenLLMetry implement these conventions today, but a future OTel release might rename or restructure them.
-  - "We showed you tools and layers and failure modes. But here's the thing - you will never instrument your way to zero surprises. The best you can do is manage the complexity, not eliminate it. Charity Majors puts it well:"
